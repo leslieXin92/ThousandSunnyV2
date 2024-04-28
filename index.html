@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .justify-start {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .justify-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .justify-end {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .justify-between {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .items-start {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .items-end {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .items-center {
+            display: flex;
+            align-items: center;
+        }
+
+        .no-shrink {
+            flex-shrink: 0;
+        }
+
+        .main {
+            width: 375px;
+            height: 812px;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .container {
+            width: 375px;
+            height: 812px;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 0;
+            margin-left: 0;
+        }
+
+        .header {
+            width: 375px;
+            height: 44px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-top: 0;
+            margin-left: 0;
+        }
+
+        .time {
+            width: 56px;
+            height: 23px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 8px;
+            margin-left: 21px;
+        }
+
+        .time-text {
+            width: 54px;
+            height: 18px;
+            text-align: center;
+            font-size: 15px;
+            font-family: 'SF Pro Text';
+            font-weight: 600;
+            line-height: 18px;
+            letter-spacing: 0px;
+            color: #000000;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 6px;
+            margin-left: 0;
+        }
+
+        .icons {
+            width: 68px;
+            height: 16px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-top: 15px;
+            margin-left: 216px;
+        }
+
+        .icon {
+            width: 18px;
+            height: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 2px;
+            margin-left: 0;
+        }
+
+        .icon-image {
+            width: 17px;
+            height: 11px;
+            margin-top: 1px;
+            margin-left: 1px;
+        }
+
+        .icon-1 {
+            width: 21px;
+            height: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 1px;
+            margin-left: 2px;
+        }
+
+        .icon-image-1 {
+            width: 15px;
+            height: 11px;
+            margin-top: 1px;
+            margin-left: 3px;
+        }
+
+        .icon-image-2 {
+            width: 25px;
+            height: 12px;
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+
+        .logo {
+            width: 12px;
+            height: 11px;
+            margin-top: 16px;
+            margin-left: 16px;
+        }
+
+        .title {
+            width: 148px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 33px;
+            margin-left: 16px;
+        }
+
+        .title-text {
+            width: 148px;
+            height: 40px;
+            text-align: left;
+            font-size: 36px;
+            font-family: Comfortaa;
+            font-weight: 400;
+            line-height: 40px;
+            letter-spacing: -0.015em;
+            color: #000000;
+            white-space: nowrap;
+            margin-top: 0;
+            margin-left: 0;
+        }
+
+        .form {
+            width: 343px;
+            height: 52px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 32px;
+            margin-left: 16px;
+        }
+
+        .form-field {
+            width: 343px;
+            height: 52px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #000000;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 0;
+            margin-left: 0;
+        }
+
+        .form-label {
+            width: 95px;
+            height: 18px;
+            text-align: left;
+            font-size: 15px;
+            font-family: Roboto;
+            font-weight: 400;
+            line-height: 18px;
+            color: rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            margin-top: 17px;
+            margin-left: 17px;
+        }
+
+        .form-1 {
+            width: 343px;
+            height: 52px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 16px;
+            margin-left: 16px;
+        }
+
+        .form-field-1 {
+            width: 343px;
+            height: 52px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #000000;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 0;
+            margin-left: 0;
+        }
+
+        .form-label-1 {
+            width: 113px;
+            height: 18px;
+            text-align: left;
+            font-size: 15px;
+            font-family: Roboto;
+            font-weight: 400;
+            line-height: 18px;
+            color: rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            margin-top: 17px;
+            margin-left: 17px;
+        }
+
+        .form-2 {
+            width: 343px;
+            height: 52px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 16px;
+            margin-left: 16px;
+        }
+
+        .form-field-2 {
+            width: 343px;
+            height: 52px;
+            border-radius: 6px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #000000;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 0;
+            margin-left: 0;
+        }
+
+        .form-button {
+            width: 35px;
+            height: 15px;
+            text-align: center;
+            font-size: 13px;
+            font-family: Roboto;
+            font-weight: 900;
+            line-height: 15px;
+            letter-spacing: 0.04em;
+            color: #ffffff;
+            white-space: nowrap;
+            margin-top: 19px;
+            margin-left: 153px;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="container">
+        <div class="header">
+            <div class="time"><span class="time-text">9:27</span></div>
+            <div class="icons">
+                <div class="icon">
+                    <img
+                            class="icon-image"
+                            src="https://p5.music.126.net/obj/w53CgsKTw6LDiDHDisOm/33967835963/e7db/4d4f/bae7/5c53b4dc5c32c57af3b342e6350fc483.png" />
+                </div>
+                <div class="icon-1">
+                    <img
+                            class="icon-image-1"
+                            src="https://p5.music.126.net/obj/w53CgsKTw6LDiDHDisOm/33967839009/178f/e39e/dac3/9da01dcbca22258e632d19b3220205b3.png" />
+                </div>
+                <img
+                        class="icon-image-2"
+                        src="https://p5.music.126.net/obj/w53CgsKTw6LDiDHDisOm/35065633944/e5ef/e527/5741/1989229ebe2c9743f675633bf3042044.png" />
+            </div>
+        </div>
+        <img
+                class="logo"
+                src="https://p5.music.126.net/obj/w53CgsKTw6LDiDHDisOm/35525597012/ebfa/55f5/437a/d0afbfc8d953347caf3c51a68540dc29.png" />
+        <div class="title"><span class="title-text">Register</span></div>
+        <div class="form">
+            <div class="form-field"><span class="form-label">Email address</span></div>
+        </div>
+        <div class="form-1">
+            <div class="form-field-1"><span class="form-label-1">Create password</span></div>
+        </div>
+        <div class="form-2">
+            <div class="form-field-2"><span class="form-button">next</span></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
