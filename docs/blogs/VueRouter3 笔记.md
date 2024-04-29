@@ -3,27 +3,27 @@ title: Vue-Router3 笔记
 date: 2022-03-20
 ---
 
-# 1. 路由的简介
+# 路由的简介
 
-## 1.1 vue-router
+## vue-router
 
 vue的一个插件库, 专门用来实现`SPA`应用
 
-## 1.2 SPA ( single page application )
+## SPA ( single page application )
 
 1. 单页`Web`应用
 2. 整个应用只有一个完整的页面
 3. 点击页面中的导航链接, 不会刷新页面, 只做页面的局部更新
 4. 数据需要通过`ajax`请求获取
 
-## 1.3 route
+## route
 
-### 1.3.1 什么是路由
+### 什么是路由
 
 1. 一个路由就是一种映射关系 `key-value`
 2. `key`为路径, `value`可能是`function`或`component`
 
-### 1.3.2 路由的分类
+### 路由的分类
 
 1. 后端路由:
     1. 理解: `value`是`function`, 用于处理客户端提交的请求
@@ -32,7 +32,7 @@ vue的一个插件库, 专门用来实现`SPA`应用
     1. 理解: `value`是`component`, 用于展示页面内容
     2. 工作过程: 当浏览器的路径改变时, 对应的组件就会显示
 
-# 2. 路由的基本使用
+# 路由的基本使用
 
 ## demo:
 
@@ -265,14 +265,14 @@ export default new VueRouter({
    <router-view> </router-view>
    ```
 
-# 3. 几个注意点
+## 几个注意点
 
 1. `路由组件`通常存放在`pages`文件夹, `一般组件`通常放在`components`文件夹
 2. 通过切换, “隐藏”了的路由组件, 通常是被销毁的, 需要的时候再去挂载
 3. 每个组件都有自己的`$route`属性, 里边存储着自己的路由信息
 4. 整个应用只有一个`router`, 可以通过组件的`$router`属性来获取
 
-# 4. 多级路由
+# 多级路由
 
 ## demo:
 
@@ -571,7 +571,7 @@ export default new VueRouter({
    <router-link to='/two/a'> </router-link>
    ```
 
-# 5. 路由的query参数
+# 路由的query参数
 
 ## demo:
 
@@ -726,43 +726,43 @@ export default new VueRouter({
    $route.query.massage
    ```
 
-# 6. 命名路由
+# 命名路由
 
-1. 作用: 可以简化路由的跳转
+## 作用
+可以简化路由的跳转
 
-2. 使用:
-   `src/router/index.js`:
+## 使用
+`src/router/index.js`:
+```json
+{
+    "path": "/a",
+    "component": "A",
+    "children": [
+       {
+           "path": "b",
+           "component": "B",
+           "children": [
+             {
+               "path": "c",
+               "name": "toC",
+               "component": "C"
+             }
+           ]
+       }
+    ]
+}
+```
 
-   ```json
-   {
-       "path": "/a",
-       "component": "A",
-       "children": [
-          {
-              "path": "b",
-              "component": "B",
-              "children": [
-                {
-                  "path": "c",
-                  "name": "toC",
-                  "component": "C"
-                }
-              ]
-          }
-       ]
-   }
-   ```
+`template`:
+```html
+<!-- 简化前, 需要写完整的路径 -->
+<router-link to='/a/b/c'> skip to c </router-link>
 
-   `template`:
-   ```html
-   <!-- 简化前, 需要写完整的路径 -->
-   <router-link to='/a/b/c'> skip to c </router-link>
-   
-   <!-- 简化后, 直接通过name跳转 -->
-   <router-link :to='{name:toC}'> skip to c </router-link>
-   ```
+<!-- 简化后, 直接通过name跳转 -->
+<router-link :to='{name:toC}'> skip to c </router-link>
+```
 
-# 7. 路由的params参数
+# 路由的params参数
 
 ## demo:
 
@@ -899,7 +899,6 @@ export default new VueRouter({
 ## summary:
 
 1. 配置路由, 声明接收`params`参数:
-
    ```json
    {
       "children": [
@@ -913,7 +912,6 @@ export default new VueRouter({
    ```
 
 2. 传递参数:
-
    ```html
    <!-- 路由跳转并携带params参数, to的字符串写法 -->
    <router-link :to="`/two/b/detail/${item.id}/${item.massage}`">
@@ -931,15 +929,13 @@ export default new VueRouter({
        {{ item.massage }}
    </router-link>
    ```
-
 3. 接收参数:
-
    ```javascript
    $route.params.id
    $route.params.massage
    ```
 
-# 8. 路由的props配置
+# 路由的props配置
 
 ## demo:
 
@@ -1066,7 +1062,7 @@ export default new VueRouter({
    props: ['id', 'massage']
    ```
 
-# 9. router-link的replace属性
+# router-link的replace属性
 
 1. 作用: 控制路由跳转时操作浏览器历史记录的模式
 2. 浏览器的历史记录有两种写入模式, 分别为`push`和`replace`, `push`是追加历史记录, `replace`是替换当前记录, 路由跳转时候默认为`push`
@@ -1079,7 +1075,7 @@ export default new VueRouter({
    <router-link replace> xxx </router-link>
    ```
 
-# 10. 编程式路由导航
+# 编程式路由导航
 
 ## demo:
 
@@ -1282,7 +1278,7 @@ export default new VueRouter({
    this.$router.go(number)
    ```
 
-# 11. 缓存路由组件
+# 缓存路由组件
 
 1. 作用: 让不展示的路由组件保持挂载, 不被销毁
 2. 实现:
@@ -1301,7 +1297,7 @@ export default new VueRouter({
        </keep-alive>
        ```
 
-# 12. 两个新的生命周期
+# 两个新的生命周期
 
 ## demo:
 
@@ -1364,7 +1360,7 @@ export default new VueRouter({
     1. `activated`: 路由组件被激活时触发
     2. `deactivated`: 路由组件失活时触发
 
-# 13. 路由守卫
+# 路由守卫
 
 ## 13.1 全局守卫
 
@@ -1701,7 +1697,7 @@ export default router
 </style>
 ```
 
-# 14. 路由器的两种工作模式
+# 路由器的两种工作模式
 
 1. `url`中的的`hash`值: `/#/`后边的内容就是`hash`值
 2. `hash`值不会包含在`http`请求中, 即`hash`值不会带给服务器
