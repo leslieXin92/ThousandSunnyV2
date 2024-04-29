@@ -5,7 +5,7 @@
         <div class='year' v-if='item.showYear'>{{ dayjs(item.date).year() }}</div>
         <div class='blog'>
           <div class='blogTitle' @click='$router.push(item.path)'>{{ item.title }}</div>
-          <div class='dot'></div>
+          <div class='dot' />
           <div class='time'>{{ dayjs(item.date).format('YYYY-MM-DD') }}</div>
         </div>
       </template>
