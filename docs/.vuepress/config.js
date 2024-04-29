@@ -42,7 +42,7 @@ export default defineUserConfig({
 
       filter: ({ filePathRelative }) => {
         return filePathRelative
-          ? filePathRelative.startsWith('blogs/') || filePathRelative.startsWith('reads/')
+          ? filePathRelative.startsWith('blogs/') || filePathRelative.startsWith('reads/') || filePathRelative.startsWith('projects/')
           : false
       },
 
@@ -90,7 +90,7 @@ export default defineUserConfig({
         {
           key: 'project',
           layout: 'Project',
-          filter: () => false,
+          filter: (page) => page.filePathRelative.startsWith('projects/'),
           frontmatter: () => ({
             title: 'Project',
             sidebar: false

@@ -26,9 +26,11 @@ const reads = useBlogType('read')
 :deep(.page) {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 
   .reads {
     display: grid;
+    justify-items: center;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     width: 80vw;
