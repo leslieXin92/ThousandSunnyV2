@@ -35,25 +35,27 @@ const blogs = computed(() => {
   margin: 0 auto;
 
   .year {
-    margin: 10px 20px;
-    font-size: 80px;
+    margin-top: 1.2rem;
+    margin-left: 1.6rem;
+    font-size: 3.5rem;
     font-weight: bold;
+    font-family: 'Space Mono', monospace;
     cursor: default;
     color: #dedede;
   }
 
   .blog {
-    padding: 30px 0;
-    font-size: 18px;
-    border-left: 6px solid rgba(0, 139, 139, 0.1);
+    padding: 1.8rem 0;
+    font-size: 1rem;
+    border-left: 0.4rem solid rgba(0, 139, 139, 0.1);
 
     &:first-child {
       padding-top: 0;
     }
 
     .blogTitle {
-      margin-left: 40px;
-      font-size: 20px;
+      margin-left: 2.5rem;
+      font-size: 1.2rem;
       cursor: pointer;
 
       &:hover {
@@ -66,15 +68,15 @@ const blogs = computed(() => {
     }
 
     .dot {
-      width: 12px;
-      height: 12px;
+      width: 0.8rem;
+      height: 0.8rem;
       border-radius: 50%;
-      transform: translateX(-9.5px);
+      transform: translateX(-0.6rem);
       background-color: darkcyan;
     }
 
     .time {
-      margin-left: 40px;
+      margin-left: 2.5rem;
       color: #999;
     }
   }

@@ -109,13 +109,6 @@ export default defineUserConfig({
 })
 
 const sorter = (pageA, pageB) => {
-  if (pageA.frontmatter.sticky && pageB.frontmatter.sticky)
-    return pageB.frontmatter.sticky - pageA.frontmatter.sticky
-
-  if (pageA.frontmatter.sticky && !pageB.frontmatter.sticky) return -1
-
-  if (!pageA.frontmatter.sticky && pageB.frontmatter.sticky) return 1
-
   if (!pageB.frontmatter.date) return 1
   if (!pageA.frontmatter.date) return -1
 
