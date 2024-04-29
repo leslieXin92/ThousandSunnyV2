@@ -34,7 +34,7 @@ vue的一个插件库, 专门用来实现`SPA`应用
 
 ## 路由的基本使用
 
-### demo:
+**demo:**
 
 `src/main.js`:
 
@@ -213,7 +213,7 @@ export default new VueRouter({
 </script>
 ```
 
-### summary:
+**summary:**
 
 1. 安装`Vue-router`:
 
@@ -274,7 +274,7 @@ export default new VueRouter({
 
 ## 多级路由
 
-### demo:
+**demo:**
 
 `src/router/index.js`:
 
@@ -526,7 +526,7 @@ export default new VueRouter({
 </style>
 ```
 
-### summary:
+**summary:**
 
 1. 配置路由规则, 使用`children`配置项: `src/router/index.js`
 
@@ -573,7 +573,7 @@ export default new VueRouter({
 
 ## 路由的query参数
 
-### demo:
+**demo:**
 
 `src/router/index.js`:
 
@@ -695,7 +695,7 @@ export default new VueRouter({
 </script>
 ```
 
-### summary:
+**summary:**
 
 1. 传递参数:
 
@@ -764,7 +764,7 @@ export default new VueRouter({
 
 ## 路由的params参数
 
-### demo:
+**demo:**
 
 `src/router/index.js`:
 
@@ -896,7 +896,7 @@ export default new VueRouter({
 </style>
 ```
 
-### summary:
+**summary:**
 
 1. 配置路由, 声明接收`params`参数:
    ```json
@@ -937,7 +937,7 @@ export default new VueRouter({
 
 ## 路由的props配置
 
-### demo:
+**demo:**
 
 `src/router/index.js`:
 
@@ -1027,7 +1027,7 @@ export default new VueRouter({
 </style>
 ```
 
-### summary:
+**summary:**
 
 1. 作用: 让路由更方便地收到参数
 2. 写法: `src/router/index.js`
@@ -1077,7 +1077,7 @@ export default new VueRouter({
 
 ## 编程式路由导航
 
-### demo:
+**demo:**
 
 `src/router/index.js`:
 
@@ -1245,7 +1245,7 @@ export default new VueRouter({
 </style>
 ```
 
-### summary:
+**summary:**
 
 1. 作用: 不借助`<router-link>`实现路由跳转, 让路由跳转更加灵活
 2. 写法:
@@ -1299,7 +1299,7 @@ export default new VueRouter({
 
 ## 两个新的生命周期
 
-### demo:
+**demo:**
 
 ```vue
 
@@ -1353,7 +1353,7 @@ export default new VueRouter({
 </style>
 ```
 
-### summary:
+**summary:**
 
 1. 作用: 路由组件所独有的两个钩子, 用于捕获路由组件的激活状态
 2. 名称:
