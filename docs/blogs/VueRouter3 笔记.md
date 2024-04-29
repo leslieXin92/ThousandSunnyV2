@@ -3,27 +3,27 @@ title: Vue-Router3 笔记
 date: 2022-03-20
 ---
 
-# 路由的简介
+## 路由的简介
 
-## vue-router
+### vue-router
 
 vue的一个插件库, 专门用来实现`SPA`应用
 
-## SPA ( single page application )
+### SPA ( single page application )
 
 1. 单页`Web`应用
 2. 整个应用只有一个完整的页面
 3. 点击页面中的导航链接, 不会刷新页面, 只做页面的局部更新
 4. 数据需要通过`ajax`请求获取
 
-## route
+### route
 
-### 什么是路由
+#### 什么是路由
 
 1. 一个路由就是一种映射关系 `key-value`
 2. `key`为路径, `value`可能是`function`或`component`
 
-### 路由的分类
+#### 路由的分类
 
 1. 后端路由:
     1. 理解: `value`是`function`, 用于处理客户端提交的请求
@@ -32,9 +32,9 @@ vue的一个插件库, 专门用来实现`SPA`应用
     1. 理解: `value`是`component`, 用于展示页面内容
     2. 工作过程: 当浏览器的路径改变时, 对应的组件就会显示
 
-# 路由的基本使用
+## 路由的基本使用
 
-## demo:
+### demo:
 
 `src/main.js`:
 
@@ -213,7 +213,7 @@ export default new VueRouter({
 </script>
 ```
 
-## summary:
+### summary:
 
 1. 安装`Vue-router`:
 
@@ -265,16 +265,16 @@ export default new VueRouter({
    <router-view> </router-view>
    ```
 
-## 几个注意点
+### 几个注意点
 
 1. `路由组件`通常存放在`pages`文件夹, `一般组件`通常放在`components`文件夹
 2. 通过切换, “隐藏”了的路由组件, 通常是被销毁的, 需要的时候再去挂载
 3. 每个组件都有自己的`$route`属性, 里边存储着自己的路由信息
 4. 整个应用只有一个`router`, 可以通过组件的`$router`属性来获取
 
-# 多级路由
+## 多级路由
 
-## demo:
+### demo:
 
 `src/router/index.js`:
 
@@ -526,7 +526,7 @@ export default new VueRouter({
 </style>
 ```
 
-## summary:
+### summary:
 
 1. 配置路由规则, 使用`children`配置项: `src/router/index.js`
 
@@ -571,9 +571,9 @@ export default new VueRouter({
    <router-link to='/two/a'> </router-link>
    ```
 
-# 路由的query参数
+## 路由的query参数
 
-## demo:
+### demo:
 
 `src/router/index.js`:
 
@@ -695,7 +695,7 @@ export default new VueRouter({
 </script>
 ```
 
-## summary:
+### summary:
 
 1. 传递参数:
 
@@ -726,12 +726,12 @@ export default new VueRouter({
    $route.query.massage
    ```
 
-# 命名路由
+## 命名路由
 
-## 作用
+### 作用
 可以简化路由的跳转
 
-## 使用
+### 使用
 `src/router/index.js`:
 ```json
 {
@@ -762,9 +762,9 @@ export default new VueRouter({
 <router-link :to='{name:toC}'> skip to c </router-link>
 ```
 
-# 路由的params参数
+## 路由的params参数
 
-## demo:
+### demo:
 
 `src/router/index.js`:
 
@@ -896,7 +896,7 @@ export default new VueRouter({
 </style>
 ```
 
-## summary:
+### summary:
 
 1. 配置路由, 声明接收`params`参数:
    ```json
@@ -935,9 +935,9 @@ export default new VueRouter({
    $route.params.massage
    ```
 
-# 路由的props配置
+## 路由的props配置
 
-## demo:
+### demo:
 
 `src/router/index.js`:
 
@@ -1027,7 +1027,7 @@ export default new VueRouter({
 </style>
 ```
 
-## summary:
+### summary:
 
 1. 作用: 让路由更方便地收到参数
 2. 写法: `src/router/index.js`
@@ -1062,7 +1062,7 @@ export default new VueRouter({
    props: ['id', 'massage']
    ```
 
-# router-link的replace属性
+## router-link的replace属性
 
 1. 作用: 控制路由跳转时操作浏览器历史记录的模式
 2. 浏览器的历史记录有两种写入模式, 分别为`push`和`replace`, `push`是追加历史记录, `replace`是替换当前记录, 路由跳转时候默认为`push`
@@ -1075,9 +1075,9 @@ export default new VueRouter({
    <router-link replace> xxx </router-link>
    ```
 
-# 编程式路由导航
+## 编程式路由导航
 
-## demo:
+### demo:
 
 `src/router/index.js`:
 
@@ -1245,7 +1245,7 @@ export default new VueRouter({
 </style>
 ```
 
-## summary:
+### summary:
 
 1. 作用: 不借助`<router-link>`实现路由跳转, 让路由跳转更加灵活
 2. 写法:
@@ -1278,7 +1278,7 @@ export default new VueRouter({
    this.$router.go(number)
    ```
 
-# 缓存路由组件
+## 缓存路由组件
 
 1. 作用: 让不展示的路由组件保持挂载, 不被销毁
 2. 实现:
@@ -1297,9 +1297,9 @@ export default new VueRouter({
        </keep-alive>
        ```
 
-# 两个新的生命周期
+## 两个新的生命周期
 
-## demo:
+### demo:
 
 ```vue
 
@@ -1353,18 +1353,18 @@ export default new VueRouter({
 </style>
 ```
 
-## summary:
+### summary:
 
 1. 作用: 路由组件所独有的两个钩子, 用于捕获路由组件的激活状态
 2. 名称:
     1. `activated`: 路由组件被激活时触发
     2. `deactivated`: 路由组件失活时触发
 
-# 路由守卫
+## 路由守卫
 
-## 13.1 全局守卫
+### 全局守卫
 
-### 13.1.1 全局前置守卫
+#### 全局前置守卫
 
 `src/router/index.js`:
 
@@ -1437,7 +1437,7 @@ router.beforeEach((to, from, next) => {
 export default router
 ```
 
-### 13.1.2 全局后置守卫
+#### 全局后置守卫
 
 `src/router/index.js`:
 
@@ -1519,7 +1519,7 @@ router.afterEach((to, from) => {
 export default router
 ```
 
-## 13.2 独享守卫
+### 独享守卫
 
 `src/router/index.js`:
 
@@ -1594,7 +1594,7 @@ const router = new VueRouter({
 export default router
 ```
 
-## 13.3 组件内路由守卫
+### 组件内路由守卫
 
 `src/router/index.js`:
 
@@ -1697,7 +1697,7 @@ export default router
 </style>
 ```
 
-# 路由器的两种工作模式
+## 路由器的两种工作模式
 
 1. `url`中的的`hash`值: `/#/`后边的内容就是`hash`值
 2. `hash`值不会包含在`http`请求中, 即`hash`值不会带给服务器
