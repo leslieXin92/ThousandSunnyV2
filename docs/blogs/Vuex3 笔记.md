@@ -18,10 +18,10 @@ date: 2022-03-11
 ### 图解
 
 全局事件总线实现多组件共享数据:
-![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203072124816.png)
+![]()
 
 Vuex实现多组件共享数据:
-![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203072125987.png)
+![]()
 
 ### github地址
 

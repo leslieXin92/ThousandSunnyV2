@@ -11,7 +11,6 @@ export default defineUserConfig({
 
   theme: defaultTheme({
     logo: '/static/chicken.png',
-    // home: '/home/',
 
     navbar: [
       {
