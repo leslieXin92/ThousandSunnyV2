@@ -7,22 +7,20 @@ date: 2022-03-11
 
 ### 1.1 Vuex是什么
 
-专门在Vue中实现集中式状态(数据)管理的一个Vue插件，对Vue应用中多个组件的共享状态进行集中式的管理(读/写)
-，也是一种组件间通信的方式，且适用于任意组件间通信。
+专门在`Vue`中实现集中式状态(数据)管理的一个`Vue`插件, 对`Vue`应用中多个组件的共享状态进行集中式的管理(读/写),
+也是一种组件间通信的方式, 且适用于任意组件间通信
 
 ### 1.2 什么时候用Vuex
 
-1. 多个组件依赖于同一状态。
-2. 来自不同组件的行为需要变更同一状态。
+1. 多个组件依赖于同一状态
+2. 来自不同组件的行为需要变更同一状态
 
 ### 1.3 图解
 
-全局事件总线实现多组件共享数据：
-
+全局事件总线实现多组件共享数据:
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203072124816.png)
 
-Vuex实现多组件共享数据：
-
+Vuex实现多组件共享数据:
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203072125987.png)
 
 ### 1.4 github地址
@@ -39,14 +37,14 @@ https://github.com/vuejs/vuex
 
 ## 3. 搭建Vuex环境
 
-安装：
+安装:
 
 ```bash
 npm i Vuex@3 // Vue2版本
 npm i Vuex@4 // Vue3版本
 ```
 
-src / store / index.js
+`src/store/index.js`
 
 ```javascript
 // 引入Vue
@@ -75,7 +73,7 @@ export default new Vuex.Store({
 })
 ```
 
-main.js：
+`main.js`:
 
 ```javascript
 import Vue from 'vue'
@@ -96,9 +94,9 @@ new Vue({
 
 ## 4. 基本使用
 
-### demo：
+### demo:
 
-src/store/index.js：
+`src/store/index.js`:
 
 ```javascript
 // 引入Vue
@@ -147,14 +145,14 @@ export default new Vuex.Store({
 })
 ```
 
-Count组件：
+`Count组件`:
 
 ```vue
 
 <template>
   <div>
     <h2>Now count is {{ $store.state.sum }}</h2>
-    <label for="select">number：</label>
+    <label for="select">number: </label>
     <select name="select" v-model.number="curCount">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -199,28 +197,25 @@ Count组件：
 </style>
 ```
 
-### summary：
+### summary:
 
-1. 组件中读取Vuex中的数据：
-
+1. 组件中读取`Vuex`中的数据:
    ```javascript
    $store.state.xxx
    ```
 
-2. 组件中修改Vuex中的数据：
-
+2. 组件中修改`Vuex`中的数据:
    ```javascript
    $store.dispatch('actions functionName', data) // 支持异步
    $store.commit('mutations functionName', data) // 只支持同步
    ```
-
-3. tips：若没有异步操作和其他业务逻辑，组件中可以跳过actions，不调用dispatch，直接调用commit。
+3. tips: 若没有异步操作和其他业务逻辑, 组件中可以跳过`actions`, 不调用`dispatch`, 直接调用`commit`
 
 ## 5. getters
 
-### demo：
+### demo:
 
-src / store / index.js：
+`src/store/index.js`:
 
 ```javascript
 // 引入Vue
@@ -277,7 +272,7 @@ export default new Vuex.Store({
 })
 ```
 
-Count组件：
+`Count组件`:
 
 ```vue
 
@@ -285,7 +280,7 @@ Count组件：
   <div>
     <h2>Now count is {{ $store.state.sum }}</h2>
     <h2>10 times count is {{ $store.getters.sumTimes }}</h2>
-    <label for="select">number：</label>
+    <label for="select">number: </label>
     <select name="select" v-model.number="curCount">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -330,12 +325,10 @@ Count组件：
 </style>
 ```
 
-### summary：
+### summary:
 
-1. 当state中数据需要经过加工后再使用时，可以使用getters加工。
-
-2. 组件中读取数据：
-
+1. 当`state`中数据需要经过加工后再使用时, 可以使用`getters`加工
+2. 组件中读取数据:
    ```javascript
    $store.getters.xxx
    ```
@@ -346,7 +339,7 @@ Count组件：
 
 ### 6.1 mapState + mapGetters
 
-src / store / index.js：
+`src/store/index.js`:
 
 ```javascript
 // 引入Vue
@@ -405,7 +398,7 @@ export default new Vuex.Store({
 })
 ```
 
-Count组件：
+`Count组件`:
 
 ```vue
 
@@ -413,9 +406,9 @@ Count组件：
   <div>
     <h2>Now count is {{ sum }}</h2>
     <h2>10 times count is {{ sumTimes }}</h2>
-    <h2>name：{{ name }}</h2>
-    <h2>age：{{ age }}</h2>
-    <label for="select">number：</label>
+    <h2>name: {{ name }}</h2>
+    <h2>age: {{ age }}</h2>
+    <label for="select">number: </label>
     <select name="select" v-model.number="curCount">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -440,11 +433,11 @@ Count组件：
       }
     },
     computed: {
-      // 写法一 对象写法：
+      // 写法一 对象写法: 
       ...mapState({ sum: 'sum', name: 'name', age: 'age' }),
       ...mapGetters({ sumTimes: 'sumTimes' }),
 
-      // 写法二 数组写法：
+      // 写法二 数组写法: 
       ...mapState(['sum', 'name', 'age']),
       ...mapGetters(['sumTimes'])
     },
@@ -474,7 +467,7 @@ Count组件：
 
 ### 6.2 mapActions + mapMutations
 
-src / store / index.js：
+`src/store/index.js`:
 
 ```javascript
 // 引入Vue
@@ -533,7 +526,7 @@ export default new Vuex.Store({
 })
 ```
 
-Count组件：
+`Count组件`:
 
 ```vue
 
@@ -541,9 +534,9 @@ Count组件：
   <div>
     <h2>Now count is {{ sum }}</h2>
     <h2>10 times count is {{ sumTimes }}</h2>
-    <h2>name：{{ name }}</h2>
-    <h2>age：{{ age }}</h2>
-    <label for="select">number：</label>
+    <h2>name: {{ name }}</h2>
+    <h2>age: {{ age }}</h2>
+    <label for="select">number: </label>
     <select name="select" v-model.number="curCount">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -568,20 +561,20 @@ Count组件：
       }
     },
     computed: {
-      // 写法一 对象写法：
+      // 写法一 对象写法: 
       ...mapState({ sum: 'sum', name: 'name', age: 'age' }),
       ...mapGetters({ sumTimes: 'sumTimes' }),
 
-      // 写法二 数组写法：
+      // 写法二 数组写法: 
       ...mapState(['sum', 'name', 'age']),
       ...mapGetters(['sumTimes'])
     },
     methods: {
-      // 方法一 对象写法：
+      // 方法一 对象写法: 
       ...mapActions({ addOdd: 'incrementOdd', addWait: 'incrementWait' }),
       ...mapMutations({ addNow: 'INCREMENT', subNow: 'DECREMENT' }),
 
-      // 方法二 数组写法：(需要改插值语法中的函数名)
+      // 方法二 数组写法: (需要改插值语法中的函数名)
       ...mapActions(['incrementOdd', 'incrementWait']),
       ...mapMutations('INCREMENT', 'DECREMENT')
     }
@@ -595,21 +588,21 @@ Count组件：
 </style>
 ```
 
-### summary：
+### summary:
 
-1. mapState：映射state中的数据为计算属性。
-2. mapGetters：映射getters中的数据为计算属性。
-3. mapActions：生成与actions对话的方法，包括 $store.dispatch(xxx)。
-4. mapMutations：生成与mutations对话的方法，包括 $store.commit(xxx)。
-5. tips：使用mapActions和mapMutations时，在模板中传递参数，不传则为event。
+1. `mapState`: 映射`state`中的数据为计算属性
+2. `mapGetters`: 映射`getters`中的数据为计算属性
+3. `mapActions`: 生成与`actions`对话的方法, 包括`$store.dispatch(xxx)`
+4. `mapMutations`: 生成与mutations对话的方法, 包括`$store.commit(xxx)`
+5. tips: 使用`mapActions`和`mapMutations`时, 在模板中传递参数, 不传则为`event`
 
 ------
 
 ## 7. 模块化+命名空间
 
-### demo：
+### demo:
 
-src / store / index.js：
+`src/store/index.js`:
 
 ```javascript
 // 引入Vue
@@ -633,7 +626,7 @@ export default new Vuex.Store({
 })
 ```
 
-src / store / count.js：
+`src/store/count.js`:
 
 ```javascript
 // 计数相关配置
@@ -672,7 +665,7 @@ export default {
 }
 ```
 
-src / store / person.js：
+`src/store/person.js`:
 
 ```javascript
 // 人员相关配置
@@ -703,17 +696,17 @@ export default {
 }
 ```
 
-Count组件：
+`Count组件`:
 
 ```vue
 
 <template>
   <div>
-    <h2>Now count is：{{ sum }}</h2>
-    <h2>10 times count is： {{ sumTimes }}</h2>
-    <h2>name：{{ name }}</h2>
-    <h2>age：{{ age }}</h2>
-    <label for="select">number：</label>
+    <h2>Now count is: {{ sum }}</h2>
+    <h2>10 times count is: {{ sumTimes }}</h2>
+    <h2>name: {{ name }}</h2>
+    <h2>age: {{ age }}</h2>
+    <label for="select">number: </label>
     <select name="select" v-model.number="curCount">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -728,7 +721,7 @@ Count组件：
 </template>
 
 <script>
-  import { mapState, mapGetters, mapActions, mapMutations } from "docs/blogs/Vuex3 笔记"
+  import { mapState, mapGetters, mapActions, mapMutations } from 'docs/blogs/Vuex3 笔记'
 
   export default {
     name: 'Count',
@@ -760,14 +753,14 @@ Count组件：
 </style>
 ```
 
-Person组件：
+`Person组件`:
 
 ```vue
 
 <template>
   <div>
-    <h2>Count Component sum is：{{ sum }}</h2>
-    <h3>first person is：{{ firstPerson }}</h3>
+    <h2>Count Component sum is: {{ sum }}</h2>
+    <h3>first person is: {{ firstPerson }}</h3>
     <input type="text" v-model="name" @keyup.enter="addPerson" @keyup.space="addNumber" />
     <span>{{ ` press Enter add name , press Space add number` }}</span>
     <ul>
@@ -785,7 +778,7 @@ Person组件：
       }
     },
     mounted() {
-      console.log(this.$store.getters);
+      console.log(this.$store.getters)
     },
     computed: {
       firstPerson() {
@@ -820,11 +813,10 @@ Person组件：
 </style>
 ```
 
-### summary：
+### summary:
 
-1. 目的：让代码更好维护，让多种数据分类更加明确。
-
-2. 修改 store 下 index.js ：
+1. 目的: 让代码更好维护, 让多种数据分类更加明确
+2. 修改`store`下`index.js`:
 
    ```javascript
    const countAbout = {
@@ -851,40 +843,40 @@ Person组件：
    })
    ```
 
-3. 组件中调用的方式：
+3. 组件中调用的方式:
 
-    1. 调用 dispatch：
+    1. 调用`dispatch`:
 
        ```javascript
-       // 方式一：直接调用dispatch
+       // 方式一: 直接调用dispatch
        this.$store.dispatch('personAbout/addNumberName', value)
-       //方式二：借助mapActions
+       //方式二: 借助mapActions
        ...mapActions('countAbout', { addOdd: 'incrementOdd', addWait: 'incrementWait' })
        ```
 
-    2. 调用 commit：
+    2. 调用`commit`:
 
        ```javascript
-       // 方式一：直接调用commit
+       // 方式一: 直接调用commit
        context.commit('ADD_PERSON', value)
-       // 方式二：借助mapMutations
+       // 方式二: 借助mapMutations
        ...mapMutations('countAbout', { addNow: 'INCREMENT', subNow: 'DECREMENT' })
        ```
 
-    3. 调用 state：
+    3. 调用`state`:
 
        ```javascript
-       // 方式一：直接读取state
+       // 方式一: 直接读取state
        this.$store.state.countAbout.sum
-       // 方式二：借助mapState
+       // 方式二: 借助mapState
        ...mapState('countAbout', ['sum', 'name', 'age'])
        ```
 
-    4. 调用 getters：
+    4. 调用`getters`:
 
        ```javascript
-       // 方式一：直接读取getters
+       // 方式一: 直接读取getters
        return this.$store.getters['personAbout/firstPerson']
-       // 方式二：借助mapGetters
+       // 方式二: 借助mapGetters
        ...mapGetters('countAbout', ['sumTimes'])
        ```
