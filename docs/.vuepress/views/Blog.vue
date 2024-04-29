@@ -41,7 +41,10 @@ const blogs = computed(() => {
     font-weight: bold;
     font-family: 'Space Mono', monospace;
     cursor: default;
-    color: #dedede;
+    opacity: 0.25;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(0, 139, 139, 0.8);
+    text-shadow: -1px 0 rgba(0, 139, 139, 0.06), 0 1px rgba(0, 139, 139, 0.06), 1px 0 rgba(0, 139, 139, 0.06), 0 -1px rgba(0, 139, 139, 0.06);
   }
 
   .blog {
