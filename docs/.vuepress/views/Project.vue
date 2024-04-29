@@ -47,7 +47,7 @@
                 v-for="item in curProject.technologyStack"
                 :key="item"
                 :text="item"
-                type="danger"
+                :type="randomTagType()"
               />
             </div>
 
@@ -75,6 +75,17 @@ import JModal from '../components/JModal.vue'
 import JTag from '../components/JTag.vue'
 import { timeFormat } from '../utils/time.js'
 
+const visible = ref(false)
+
+const projects = computed(() => {
+  const origin = useBlogType('project')
+  return origin.value.items.map(item => ({
+    ...item.info
+  }))
+})
+
+const curProject = ref({})
+
 const modalFooter = computed(() => {
   return [
     {
@@ -94,17 +105,6 @@ const modalFooter = computed(() => {
   ].filter(i => i.condition)
 })
 
-const visible = ref(false)
-
-const projects = computed(() => {
-  const origin = useBlogType('project')
-  return origin.value.items.map(item => ({
-    ...item.info
-  }))
-})
-
-const curProject = ref({})
-
 const handleClickProject = (project) => {
   curProject.value = project
   visible.value = true
@@ -112,6 +112,11 @@ const handleClickProject = (project) => {
 
 const skip2Web = (url) => {
   window.open(url)
+}
+
+const randomTagType = () => {
+  const tagTypes = ['success', 'warning', 'danger']
+  return tagTypes[Math.floor(Math.random() * tagTypes.length)]
 }
 </script>
 

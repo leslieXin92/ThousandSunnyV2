@@ -62,7 +62,6 @@ const handleClose = () => {
 }
 
 .modalBody {
-  //flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -73,8 +72,8 @@ const handleClose = () => {
   padding: 20px;
   animation: slideIn 0.3s;
   border-radius: 10px;
-  box-shadow: 0 0 180px #dedede inset;
-  background-color: rgba(256, 256, 256, 0.4);
+  box-shadow: 0 0 200px #dedede inset;
+  background-color: rgba(128, 128, 128, 0.95);
 
   .header {
     display: flex;
