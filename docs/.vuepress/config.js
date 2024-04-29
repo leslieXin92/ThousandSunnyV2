@@ -81,7 +81,11 @@ export default defineUserConfig({
             title: 'Blog',
             sidebar: false
           }),
-          sorter
+          sorter: (pageA, pageB) => {
+            if (!pageB.date) return 1
+            if (!pageA.date) return -1
+            return new Date(pageB.date).getTime() - new Date(pageA.date).getTime()
+          }
         },
         {
           key: 'project',
@@ -91,7 +95,11 @@ export default defineUserConfig({
             title: 'Project',
             sidebar: false
           }),
-          sorter
+          sorter: (pageA, pageB) => {
+            if (!pageB.date) return 1
+            if (!pageA.date) return -1
+            return new Date(pageB.date).getTime() - new Date(pageA.date).getTime()
+          }
         },
         {
           key: 'read',
@@ -101,19 +109,13 @@ export default defineUserConfig({
             title: 'Read',
             sidebar: false
           }),
-          sorter
+          sorter: (pageA, pageB) => {
+            if (!pageB.date) return 1
+            if (!pageA.date) return -1
+            return new Date(pageB.date).getTime() - new Date(pageA.date).getTime()
+          }
         }
       ]
     })
   ]
 })
-
-const sorter = (pageA, pageB) => {
-  if (!pageB.frontmatter.date) return 1
-  if (!pageA.frontmatter.date) return -1
-
-  return (
-    new Date(pageB.frontmatter.date).getTime() -
-    new Date(pageA.frontmatter.date).getTime()
-  )
-}

@@ -45,6 +45,10 @@ const blogs = computed(() => {
   }
 
   .blog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     padding: 1.8rem 0;
     font-size: 1rem;
     border-left: 0.4rem solid rgba(0, 139, 139, 0.1);
