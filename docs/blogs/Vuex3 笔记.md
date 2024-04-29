@@ -3,19 +3,19 @@ title: Vuex3 笔记
 date: 2022-03-11
 ---
 
-## 1. Vuex简介
+## Vuex简介
 
-### 1.1 Vuex是什么
+### Vuex是什么
 
 专门在`Vue`中实现集中式状态(数据)管理的一个`Vue`插件, 对`Vue`应用中多个组件的共享状态进行集中式的管理(读/写),
 也是一种组件间通信的方式, 且适用于任意组件间通信
 
-### 1.2 什么时候用Vuex
+### 什么时候用Vuex
 
 1. 多个组件依赖于同一状态
 2. 来自不同组件的行为需要变更同一状态
 
-### 1.3 图解
+### 图解
 
 全局事件总线实现多组件共享数据:
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203072124816.png)
@@ -23,19 +23,19 @@ date: 2022-03-11
 Vuex实现多组件共享数据:
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203072125987.png)
 
-### 1.4 github地址
+### github地址
 
-https://github.com/vuejs/vuex
-
-------
-
-## 2. Vuex工作原理
-
-![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203080051941.png)
+[vuex](https://github.com/vuejs/vuex)
 
 ------
 
-## 3. 搭建Vuex环境
+## Vuex工作原理
+
+![](https://vuex.vuejs.org/vuex.png)
+
+------
+
+## 搭建Vuex环境
 
 安装:
 
@@ -92,9 +92,9 @@ new Vue({
 
 ------
 
-## 4. 基本使用
+## 基本使用
 
-### demo:
+**demo:**
 
 `src/store/index.js`:
 
@@ -197,7 +197,7 @@ export default new Vuex.Store({
 </style>
 ```
 
-### summary:
+**summary:**
 
 1. 组件中读取`Vuex`中的数据:
    ```javascript
@@ -211,9 +211,9 @@ export default new Vuex.Store({
    ```
 3. tips: 若没有异步操作和其他业务逻辑, 组件中可以跳过`actions`, 不调用`dispatch`, 直接调用`commit`
 
-## 5. getters
+## getters
 
-### demo:
+**demo:**
 
 `src/store/index.js`:
 
@@ -325,7 +325,7 @@ export default new Vuex.Store({
 </style>
 ```
 
-### summary:
+**summary:**
 
 1. 当`state`中数据需要经过加工后再使用时, 可以使用`getters`加工
 2. 组件中读取数据:
@@ -335,9 +335,9 @@ export default new Vuex.Store({
 
 ------
 
-## 6. 四种map方法
+## 四种map方法
 
-### 6.1 mapState + mapGetters
+### mapState + mapGetters
 
 `src/store/index.js`:
 
@@ -465,7 +465,7 @@ export default new Vuex.Store({
 </style>
 ```
 
-### 6.2 mapActions + mapMutations
+### mapActions + mapMutations
 
 `src/store/index.js`:
 
@@ -588,7 +588,7 @@ export default new Vuex.Store({
 </style>
 ```
 
-### summary:
+**summary:**
 
 1. `mapState`: 映射`state`中的数据为计算属性
 2. `mapGetters`: 映射`getters`中的数据为计算属性
@@ -598,9 +598,9 @@ export default new Vuex.Store({
 
 ------
 
-## 7. 模块化+命名空间
+## 模块化+命名空间
 
-### demo:
+**demo:**
 
 `src/store/index.js`:
 
@@ -813,7 +813,7 @@ export default {
 </style>
 ```
 
-### summary:
+**summary:**
 
 1. 目的: 让代码更好维护, 让多种数据分类更加明确
 2. 修改`store`下`index.js`:
