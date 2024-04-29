@@ -1,6 +1,6 @@
 ---
 title: 深入浅出webpack
-date: 2022-01-02
+date: 2024-04-29
 cover: /reads/深入浅出webpack.jpg
 ---
 
