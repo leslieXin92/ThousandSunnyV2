@@ -3,11 +3,11 @@ title: Vue2 笔记
 date: 2022-03-07
 ---
 
-# 一、Vue核心
+## Vue核心
 
-## 1.1 Vue简介
+### Vue简介
 
-### 一套用于 <i><b>构建用户界面</b></i> 的 <i><b>渐进式</b></i> JS框架
+#### 一套用于 <i><b>构建用户界面</b></i> 的 <i><b>渐进式</b></i> JS框架
 
 - 构建用户界面: 在合适的时间, 发起合适的请求, 拿到合适的数据, 显示在合适的位置
 
@@ -17,7 +17,7 @@ date: 2022-03-07
 
 - 复杂应用: 可以引入各种Vue插件
 
-### 特点:
+#### 特点:
 
 - 采用组件化模式, 提高代码复用率以及可维护性
 - 声明式编码, 无需直接操控 DOM, 提高开发效率
@@ -25,9 +25,9 @@ date: 2022-03-07
 
 ------
 
-## 1.2 初识Vue
+### 初识Vue
 
-### Hello World:
+#### Hello World:
 
 ```html
 <!DOCTYPE html>
@@ -66,7 +66,7 @@ date: 2022-03-07
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. 想让 Vue 作, 就必须创建一个 Vue 实例, 且要传入一个配置对象
 2. root 容器里的代码依然符合 HTML 规范, 只不过加入了一些特殊的 Vue 语法
@@ -80,9 +80,9 @@ date: 2022-03-07
 
 ------
 
-## 1.3 模板语法
+### 模板语法
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -129,7 +129,7 @@ date: 2022-03-07
 </html>
 ```
 
-### summary:
+**summary:**:
 
 Vue模板语法分为两大类:
 
@@ -142,9 +142,9 @@ Vue模板语法分为两大类:
 
 ------
 
-## 1.4 数据绑定
+### 数据绑定
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -191,7 +191,7 @@ Vue模板语法分为两大类:
 </html>
 ```
 
-### summary:
+**summary:**:
 
 Vue有两种数据绑定的方式
 
@@ -200,9 +200,9 @@ Vue有两种数据绑定的方式
 
 ------
 
-## 1.5 el和data的两种写法
+### el和data的两种写法
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -270,7 +270,7 @@ Vue有两种数据绑定的方式
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. el有两种写法:
     1. `new Vue`时配置`el`属性
@@ -283,9 +283,9 @@ Vue有两种数据绑定的方式
 
 ------
 
-## 1.6 MVVM模型
+### MVVM模型
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -325,7 +325,7 @@ Vue有两种数据绑定的方式
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. M: `模型 model` => data里的数据
 2. V: `视图 View` => 模板代码
@@ -333,9 +333,9 @@ Vue有两种数据绑定的方式
 
 ------
 
-## 1.7 Vue数据代理
+### Vue数据代理
 
-### 1.7.1 Object.defineProperty( )
+#### Object.defineProperty( )
 
 ```html
 <!DOCTYPE html>
@@ -378,7 +378,7 @@ Vue有两种数据绑定的方式
 </html>
 ```
 
-### 1.7.2 什么是数据代理
+#### 什么是数据代理
 
 ```html
 <!DOCTYPE html>
@@ -412,7 +412,7 @@ Vue有两种数据绑定的方式
 </html>
 ```
 
-### 1.7.3 Vue的数据代理
+#### Vue的数据代理
 
 ```html
 <!DOCTYPE html>
@@ -454,7 +454,7 @@ Vue有两种数据绑定的方式
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. Vue中的数据代理: 通过`vm对象`来代理data对象中属性的操作（读/写）
 2. Vue中数据代理的好处: 更加方便的操作data里的数据
@@ -467,11 +467,11 @@ Vue有两种数据绑定的方式
 
 ------
 
-## 1.8 事件处理
+### 事件处理
 
-### 1.8.1 事件的基本使用
+#### 事件的基本使用
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -520,7 +520,7 @@ Vue有两种数据绑定的方式
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. 使用`v-on:xxx`或者`@xxx`绑定事件, xxx为事件名
 2. 事件的回调需要配置在`methods`里, 最终出现在`vm`上
@@ -528,9 +528,9 @@ Vue有两种数据绑定的方式
 4. `methods`中配置的函数, 不要用箭头函数, 否则`this`就会从`vm`变为`window`
 5. `@click="func"`和`@click="func($event)"`效果一致, 但后者可以传参
 
-### 1.8.2 事件修饰符
+#### 事件修饰符
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -723,7 +723,7 @@ Vue有两种数据绑定的方式
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 Vue 中的事件修饰符:
 
@@ -734,9 +734,9 @@ Vue 中的事件修饰符:
 5. `.self`: 只有`event.target`为当前操作元素时才会触发事件
 6. `.passive`: 事件的默认行为会立即执行, 无需等待事件回调执行完毕
 
-### 1.8.3 键盘事件
+#### 键盘事件
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -792,7 +792,7 @@ Vue 中的事件修饰符:
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. Vue中常用的案件别名:
     - 回车: `enter`
@@ -812,9 +812,9 @@ Vue 中的事件修饰符:
 
 ------
 
-## 1.9 计算属性
+### 计算属性
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -879,7 +879,7 @@ Vue 中的事件修饰符:
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. 定义: 要用的属性不存在, 要通过已有属性计算得来
 2. 原理: 底层借助了`Object.defineProperty`方法提供的`getter`和`setter`
@@ -893,11 +893,11 @@ Vue 中的事件修饰符:
 
 ------
 
-## 1.10 监听属性
+### 监听属性
 
-### 1.10.1 监听属性
+#### 监听属性
 
-#### demo:
+**demo:**
 
 ```html
     <!DOCTYPE html>
@@ -977,7 +977,7 @@ Vue 中的事件修饰符:
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 监听属性`watch`:
 
@@ -987,9 +987,9 @@ Vue 中的事件修饰符:
     1. `new Vue`时传入`watch`配置
     2. 通过`Vm.$watch`监视
 
-### 1.10.2 深度监视
+#### 深度监视
 
-#### demo:
+**demo:**
 
 ```html
     <!DOCTYPE html>
@@ -1095,7 +1095,7 @@ Vue 中的事件修饰符:
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. 深度监视:
     1. Vue中的`watch`默认不监测对象内部值得改变, 只监视一层
@@ -1106,9 +1106,9 @@ Vue 中的事件修饰符:
 
 ------
 
-## 1.11 watch与computed
+### watch与computed
 
-### watch实现computed的demo:
+#### watch实现computed的demo:
 
 ```html
 <!DOCTYPE html>
@@ -1160,7 +1160,7 @@ Vue 中的事件修饰符:
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. `watch`与`computed`之间的区别:
     1. `computed`能完成的功能, `watch`都能完成
@@ -1172,9 +1172,9 @@ Vue 中的事件修饰符:
 
 ------
 
-## 1.12 绑定样式
+### 绑定样式
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -1282,7 +1282,7 @@ Vue 中的事件修饰符:
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. class样式 `:class="xxx"`, `xxx`可以为字符串、对象、数组
     1. 字符串写法适用于: 类名不确定, 需动态获取
@@ -1294,9 +1294,9 @@ Vue 中的事件修饰符:
 
 ------
 
-## 1.13 条件渲染
+### 条件渲染
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -1372,7 +1372,7 @@ Vue 中的事件修饰符:
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. `v-if`:
     1. 写法: `v-if="xxx"`、`v-else-if="xxx"`、`v-else`
@@ -1387,11 +1387,11 @@ Vue 中的事件修饰符:
 
 ------
 
-## 1.14 列表渲染
+### 列表渲染
 
-### 1.14.1 基本列表
+#### 基本列表
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -1515,15 +1515,15 @@ Vue 中的事件修饰符:
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. `v-for`用于展示列表数据
 2. 语法: `v-for="(item, index) in xxx"`、`:key="item.id"`
 3. 可以遍历数组、对象、字符串、指定次数
 
-### 1.14.2 key的作用及原理
+#### key的作用及原理
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -1627,17 +1627,17 @@ Vue 中的事件修饰符:
 </html>
 ```
 
-#### 当key为index时:
+**当key为index时:**
 
 tips: 若不写`key`, Vue默认`index`为`key`
 
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202202202334112.png)
 
-#### 当key为id时:
+**当key为id时:**
 
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202202202335791.png)
 
-#### summary:
+**summary:**:
 
 1. `虚拟dom`中`key`的作用:
     1. `key`是`虚拟dom`对象的标识, 当状态中的数据发生变化时, Vue会根据`新数据`去生成`新虚拟dom`, 随后Vue进行`新虚拟dom`
@@ -1654,7 +1654,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
     1. 最好使用每条数据的唯一标识作为`key`, 比如`id`、`手机号`、`身份证号`、`学号`等唯一值
     2. 如果不存在对数据的逆序添加、逆序删除等破坏顺序的操作, 仅用于渲染列表和展示, 可以使用`index`来作为`key`
 
-### 1.14.3 列表过滤
+#### 列表过滤
 
 ```html
 <!DOCTYPE html>
@@ -1813,7 +1813,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### 1.14.4 列表排序
+#### 列表排序
 
 ```html
 <!DOCTYPE html>
@@ -1929,9 +1929,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### 1.14.5 Vue的数据监测
+#### Vue的数据监测
 
-#### 模拟Vue数据监视:
+##### 模拟Vue数据监视:
 
 ```html
 <!DOCTYPE html>
@@ -1983,7 +1983,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 `shortcoming`: 只能监视一层, 无法监视多级结构
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2125,7 +2125,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. Vue会监视`data`中所有层次的数据
 2. 如何监测对象中的数据: 通过`setter`实现监视, 且要在`new Vue`时就传入要监测的数据
@@ -2142,9 +2142,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 1.15 收集表单数据
+### 收集表单数据
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2252,7 +2252,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. 若`<input type='text' />`, 则`v-model`收集的是`value`值, 用户输入的就是`value`值
 2. 若`<input type='radio' />`, 则`v-model`收集的是`value`值, 且要给标签配置`value`值
@@ -2268,9 +2268,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 1.16 过滤器
+### 过滤器
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2347,7 +2347,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. 定义: 对要显示的数据进行特定的格式转换后再显示, 适用于一些简单逻辑的处理
 2. 语法:
@@ -2359,11 +2359,11 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 1.17 内部指令
+### 内部指令
 
-### 1.17.1 v-text指令
+#### v-text指令
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2406,14 +2406,14 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. 作用: 向其所在的节点中渲染文本内容
 2. 与插值语法的区别: `v-text`会替换掉节点的内容, 插值语法不会
 
-### 1.17.2 v-html指令
+#### v-html指令
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2455,7 +2455,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. 作用: 向指定节点中渲染包含`html`结构的内容
 2. 与插值语法区别:
@@ -2465,9 +2465,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
     1. 在网站上动态渲染任意`html`是非常危险的, 容易导致`XSS攻击`
     2. 一定要在可信的内容上使用`v-html`, 永远不要用在用户提交的内容上
 
-### 1.17.3 v-clock指令
+#### v-clock指令
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2511,14 +2511,14 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. 本质是一个特殊属性, 没有值, Vue实例创建完毕并接管容器后, 会删掉`v-clock`属性
 2. 使用`css`配合`v-clock`可以解决网速慢时页面展示出`{{ name }}`的问题
 
-### 1.17.4 v-once指令
+#### v-once指令
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2559,14 +2559,14 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. `v-once`所在节点在初次动态渲染后, 就被视为静态内容了
 2. 以后数据的改变不会引起`v-once`所在结构的更新, 可以用于优化性能
 
-### 1.17.5 v-pre指令
+#### v-pre指令
 
-#### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2607,16 +2607,16 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-#### summary:
+**summary:**:
 
 1. 跳过其所在的节点的编译过程
 2. 可利用他跳过没有使用指令语法、没有使用插值语法的节点, 加快编译速度
 
 ------
 
-## 1.18 自定义指令
+### 自定义指令
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2702,7 +2702,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. 定义语法:
     1. 局部指令: `directives: { name: obj }`或`directives(){}`
@@ -2717,9 +2717,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 1.19 生命周期
+### 生命周期
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2799,7 +2799,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. 常用的生命周期钩子:
     1. `mounted`: 发生ajax请求、启动定时器、绑定自定义事件、订阅消息等初始化操作
@@ -2811,15 +2811,15 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202202272338533.png)
 
-# 二、Vue组件化编程
+## Vue组件化编程
 
-## 2.1 对组件的理解
+### 对组件的理解
 
-### 1. 传统方式编写应用:
+#### 传统方式编写应用:
 
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202202280056387.png)
 
-### 2. 组件化方式编写应用:
+#### 组件化方式编写应用:
 
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202202280056627.png)
 
@@ -2827,9 +2827,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 2.2 非单文件组件
+### 非单文件组件
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -2934,7 +2934,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. Vue中使用组件的三大步骤:
     1. 定义组件
@@ -2952,9 +2952,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 2.3 几个注意事项
+### 几个注意事项
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -3015,7 +3015,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. 关于组件名:
     1. 一个单词组成:
@@ -3034,7 +3034,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 2.4 组建的嵌套
+### 组建的嵌套
 
 ```html
 <!DOCTYPE html>
@@ -3140,9 +3140,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 2.5 VueComponent
+### VueComponent
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -3211,7 +3211,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. `people`组件本质是一个名为`VueComponent`的构造函数, 且不是程序员定义的, 是`Vue.extend`生成的
 2. 我们只需要写`<people />`或`<people> </people>`, Vue解析时会帮我们创建people组件的实例对象
@@ -3223,9 +3223,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 2.6 一个重要的内置关系
+### 一个重要的内置关系
 
-### demo:
+**demo:**
 
 ```html
 <!DOCTYPE html>
@@ -3303,7 +3303,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### summary:
+**summary:**:
 
 1. `VueComponent.prototype.__proto__ === Vue.prototype`
 
@@ -3314,9 +3314,9 @@ tips: 若不写`key`, Vue默认`index`为`key`
 
 ------
 
-## 2.7 单文件组件
+### 单文件组件
 
-### 1. index.html:
+`index.html`
 
 ```html
 <!DOCTYPE html>
@@ -3338,7 +3338,7 @@ tips: 若不写`key`, Vue默认`index`为`key`
 </html>
 ```
 
-### 2. main.js:
+`main.js`
 
 ```javascript
 import App from './App'
@@ -3351,7 +3351,7 @@ new Vue({
 })
 ```
 
-### 3. App.vue:
+`App.vue`
 
 ```vue
 
@@ -3380,7 +3380,7 @@ new Vue({
 </style>
 ```
 
-### 4. School.vue:
+`School.vue`
 
 ```vue
 
@@ -3407,7 +3407,7 @@ new Vue({
 </style>
 ```
 
-### 5. Student.vue:
+`Student.vue`
 
 ```vue
 
@@ -3443,9 +3443,9 @@ new Vue({
 </style>
 ```
 
-# 三、Vue-cli
+## Vue-cli
 
-## 3.1 创建脚手架文件
+### 创建脚手架文件
 
 第一步（仅第一次）: 全局安装`@Vue/CLI`
 
@@ -3487,13 +3487,13 @@ tips:
 
 ------
 
-## 3.2 Vue-cli项目目录
+### Vue-cli项目目录
 
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203012245366.png)
 
 ------
 
-## 3.3 render函数
+### render函数
 
 在非脚手架环境中, 创建Vue实例的代码为:
 
@@ -3525,34 +3525,34 @@ new Vue({
 (found in <Root>)
 ```
 
-### 报错原因:
+#### 报错原因:
 
 `main.js`中使用`import Vue from 'vue'`引入的`Vue`, 是阉割版本的`Vue`, 具体版本为`node_modules/vue/package.json`
 中`module`, 对应的版本文件阉割了模板解析器, 无法解析template模板
 
-### 为什么使用阉割版本的Vue:
+#### 为什么使用阉割版本的Vue:
 
 在开发环境中, 需要解析`template`模板, 但最终由`webpack`打包后, 已将`vue`文件转换成`html`、`css`、`js`文件,
 不需要再使用`template`解析器为了使打包后的项目文件更小
 
-### 解决方法:
+#### 解决方法:
 
 1. 引入完整版vue完整版在`node_modules/vue/dist/vue.js`
 2. 使用render函数
    ```javascript
-   render(createElement){
+   render(createElement) {
        console.log(typeof createElement) // function
        return createElement('h1','hello')
    }
 
    // 可简写为: 
-   render:createElement => createElement('h1','hello')
+   render: createElement => createElement('h1','hello')
 
    // 脚手架环境中: 
-   render:h => h(App)
+   render: h => h(App)
    ```
 
-### summary:
+**summary:**:
 
 1. `vue.js`与`vue.runtime.xxx.js`的区别:
     1. `vue.js`是完整版的Vue, 包含核心功能+模板解析器
@@ -3562,7 +3562,7 @@ new Vue({
 
 ------
 
-## 3.4 修改默认配置
+### 修改默认配置
 
 `Vue-cli`隐藏了所有`webpack`相关的配置, 若想查看具体的`webpack`配置, 执行下行命令
 
@@ -3572,11 +3572,11 @@ vue inspect > output.js
 
 若想自定义个性化配置, 参考`https://cli.vuejs.org/zh/config/`
 
-# 四、Vue进阶
+## Vue进阶
 
-## 4.1 ref属性
+### ref属性
 
-### demo:
+**demo:**
 
 ```vue
 
@@ -3618,7 +3618,7 @@ vue inspect > output.js
 </script>
 ```
 
-### summary:
+**summary:**:
 
 1. 被用来给元素或子组件注册引用信息( id的替代者 )
 2. 应用在`HTML`标签上获取的是`真实DOM`元素, 应用在组件标签上是组件实例对象(`VC`)
@@ -3628,9 +3628,9 @@ vue inspect > output.js
 
 ------
 
-## 4.2 props属性
+### props属性
 
-### demo:
+**demo:**
 
 父组件:
 
@@ -3724,7 +3724,7 @@ vue inspect > output.js
 </style>
 ```
 
-### summary:
+**summary:**:
 
 1. 功能: 让组件接收外部传进来的数据
 
@@ -3780,9 +3780,9 @@ vue inspect > output.js
 
 ------
 
-## 4.3 mixin
+### mixin
 
-### demo:
+**demo:**
 
 `src/mixin.js`:
 
@@ -3907,7 +3907,7 @@ new Vue({
 </style>
 ```
 
-### summary:
+**summary:**:
 
 1. 功能: 可以把多个组件公用的配置提取成一个`mixin`对象
 2. 使用方式:
@@ -3918,9 +3918,9 @@ new Vue({
 
 ------
 
-## 4.4 plugins
+### plugins
 
-### demo:
+**demo:**
 
 `src/plugins.js`:
 
@@ -4030,23 +4030,23 @@ new Vue({
 </style>
 ```
 
-### summary:
+**summary:**:
 
 1. 功能: 用于增强`Vue`
 2. 本质: 包含`install`方法的一个对象, `install`的第一个参数是`Vue`, 第二个以后的参数是插件使用者自己传递的参数
 
 ------
 
-## 4.5 scoped样式
+### scoped样式
 
 1. 作用: 让样式局部生效, 防止类名相同导致样式冲突
 2. 写法: `<style scoped></style>`
 
 ------
 
-## 4.6 自定义事件
+### 自定义事件
 
-### demo:
+**demo:**
 
 App组件:
 
@@ -4197,7 +4197,7 @@ App组件:
 </style>
 ```
 
-### summary:
+**summary:**:
 
 1. 子组件给父组件传值
 2. 使用场景: 子给父传值, 在父中给子绑定自定义事件, 事件回调在父中定义
@@ -4214,9 +4214,9 @@ App组件:
 
 ------
 
-## 4.7 全局事物总线
+### 全局事物总线
 
-### demo:
+**demo:**
 
 `main.js`:
 
@@ -4328,7 +4328,7 @@ new Vue({
 </style>
 ```
 
-### summary:
+**summary:**:
 
 1. 一种组件间通信的方式, 适用于任意组件间通信
 2. 安装全局事件总线详情见`demo`中的`main.js`
@@ -4362,9 +4362,9 @@ new Vue({
 
 ------
 
-## 4.8 消息订阅与发布
+### 消息订阅与发布
 
-### demo:
+**demo:**
 
 `School组件`:
 
@@ -4417,47 +4417,47 @@ new Vue({
 ```vue
 
 <template>
-   <div class="student">
-      <h1>name: {{ name }}</h1>
-      <h1>age: {{ age }}</h1>
-      <button @click="sendName">send name to school</button>
-   </div>
+  <div class="student">
+    <h1>name: {{ name }}</h1>
+    <h1>age: {{ age }}</h1>
+    <button @click="sendName">send name to school</button>
+  </div>
 </template>
 
 <script>
-   // 引入pubsub-js
-   import pubsub from 'pubsub-js'
+  // 引入pubsub-js
+  import pubsub from 'pubsub-js'
 
-   export default {
-      name: 'Student',
-      data() {
-         return {
-            name: 'yahoo',
-            age: 23
-         }
-      },
-      methods: {
-         sendName() {
-            // 发布hello消息
-            pubsub.publish('hello', this.name)
-         }
+  export default {
+    name: 'Student',
+    data() {
+      return {
+        name: 'yahoo',
+        age: 23
       }
+    },
+    methods: {
+      sendName() {
+        // 发布hello消息
+        pubsub.publish('hello', this.name)
+      }
+    }
 
-   }
+  }
 </script>
 
 <style>
-   .student {
-      background-color: aquamarine;
-   }
+  .student {
+    background-color: aquamarine;
+  }
 
-   button {
-      margin-right: 10px;
-   }
+  button {
+    margin-right: 10px;
+  }
 </style>
 ```
 
-### summary:
+**summary:**:
 
 1. 组件间通信的方式, 适用于任意组件间通信
 
@@ -4504,7 +4504,7 @@ new Vue({
 
 ------
 
-## 4.9 nextTick
+### nextTick
 
 1. 语法:
    ```javascript
@@ -4515,134 +4515,134 @@ new Vue({
 
 ------
 
-## 4.10 动画与过渡
+### 动画与过渡
 
-### 4.10.1 动画
-
-```vue
-
-<template>
-   <div>
-      <button @click="handleShow">show/hide</button>
-
-      <transition name="hello" appear>
-         <h2 v-show="isShow">hello</h2>
-      </transition>
-   </div>
-</template>
-
-<script>
-   export default {
-      name: 'hello',
-      data() {
-         return {
-            isShow: true
-         }
-      },
-      methods: {
-         handleShow() {
-            this.isShow = !this.isShow
-         }
-      }
-   }
-</script>
-
-<style>
-   h2 {
-      background-color: paleturquoise;
-   }
-
-   .hello-enter-active {
-      animation: yahu 1s ease-in;
-   }
-
-   .hello-leave-active {
-      animation: yahu 1s ease-out reverse;
-   }
-
-   @keyframes yahu {
-      from {
-         transform: translateX(-100%);
-      }
-      to {
-         transform: translateX(0);
-      }
-   }
-</style>
-```
-
-### 4.10.2 过渡
+#### 动画
 
 ```vue
 
 <template>
-   <div>
-      <button @click="handleShow">show/hide</button>
+  <div>
+    <button @click="handleShow">show/hide</button>
 
-      <transition name="hello" appear>
-         <h2 v-show="isShow">hello</h2>
-      </transition>
-
-      <transition-group name="hello" appear>
-         <h2 v-show="isShow" key="1">hello</h2>
-         <h2 v-show="isShow" key="2">hello</h2>
-      </transition-group>
-   </div>
+    <transition name="hello" appear>
+      <h2 v-show="isShow">hello</h2>
+    </transition>
+  </div>
 </template>
 
 <script>
-   export default {
-      name: 'hello',
-      data() {
-         return {
-            isShow: true
-         }
-      },
-      methods: {
-         handleShow() {
-            this.isShow = !this.isShow
-         }
+  export default {
+    name: 'hello',
+    data() {
+      return {
+        isShow: true
       }
-   }
+    },
+    methods: {
+      handleShow() {
+        this.isShow = !this.isShow
+      }
+    }
+  }
 </script>
 
 <style>
-   h2 {
-      background-color: paleturquoise;
-   }
+  h2 {
+    background-color: paleturquoise;
+  }
 
-   /* 进入的起点、离开的重点 */
-   .hello-enter,
-   .hello-leave-to {
+  .hello-enter-active {
+    animation: yahu 1s ease-in;
+  }
+
+  .hello-leave-active {
+    animation: yahu 1s ease-out reverse;
+  }
+
+  @keyframes yahu {
+    from {
       transform: translateX(-100%);
-   }
-
-   /* 进入过程、离开过程 */
-   .hello-enter-active,
-   .hello-leave-active {
-      transition: 0.5s linear;
-   }
-
-   /* 进入的重点、离开的起点 */
-   .hello-enter-to,
-   .hello-leave {
+    }
+    to {
       transform: translateX(0);
-   }
+    }
+  }
 </style>
 ```
 
-### summary:
+#### 过渡
+
+```vue
+
+<template>
+  <div>
+    <button @click="handleShow">show/hide</button>
+
+    <transition name="hello" appear>
+      <h2 v-show="isShow">hello</h2>
+    </transition>
+
+    <transition-group name="hello" appear>
+      <h2 v-show="isShow" key="1">hello</h2>
+      <h2 v-show="isShow" key="2">hello</h2>
+    </transition-group>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'hello',
+    data() {
+      return {
+        isShow: true
+      }
+    },
+    methods: {
+      handleShow() {
+        this.isShow = !this.isShow
+      }
+    }
+  }
+</script>
+
+<style>
+  h2 {
+    background-color: paleturquoise;
+  }
+
+  /* 进入的起点、离开的重点 */
+  .hello-enter,
+  .hello-leave-to {
+    transform: translateX(-100%);
+  }
+
+  /* 进入过程、离开过程 */
+  .hello-enter-active,
+  .hello-leave-active {
+    transition: 0.5s linear;
+  }
+
+  /* 进入的重点、离开的起点 */
+  .hello-enter-to,
+  .hello-leave {
+    transform: translateX(0);
+  }
+</style>
+```
+
+**summary:**:
 
 1. 作用: 在插入、更新或移除`DOM`元素时, 在合适的时候给元素添加样式类名
 2. 图示: ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203060455661.png)
 3. 类名:
     1. 元素进入的样式类名:
-       1. `v-enter`: 进入的起点
-       2. `v-enter-active`: 进入过程中
-       3. `v-enter-to`: 进入的终点
+        1. `v-enter`: 进入的起点
+        2. `v-enter-active`: 进入过程中
+        3. `v-enter-to`: 进入的终点
     2. 元素离开的样式类名:
-       1. `v-leave`: 离开的起点
-       2. `v-leave-active`: 离开过程中
+        1. `v-leave`: 离开的起点
+        2. `v-leave-active`: 离开过程中
     3. `v-leave-to`: 离开的终点
 4. 使用`<transition>`标签包裹要过渡的元素, 并配置`name`属性
    ```html
@@ -4660,36 +4660,36 @@ new Vue({
 
 ------
 
-## 4.11 Vue-cli配置代理
+### Vue-cli配置代理
 
-### demo:
+**demo:**
 
 `vue.config.js`:
 
 ```javascript
 module.exports = {
-   // 开启代理服务器: 方式一
-   devServer: {
-      proxy: 'http://localhost:5000'
-   },
+  // 开启代理服务器: 方式一
+  devServer: {
+    proxy: 'http://localhost:5000'
+  },
 
-   // 开启代理服务器: 方式二
-   devServer: {
-      proxy: {
-         '/yaHu': { // 请求前缀
-            target: 'http://localhost:5000',
-            pathRewrite: { '^/yaHu': '' }, // 资源服务器接收代理服务器的api中过滤掉前缀
-            ws: true, // 用于支持websocket
-            changeOrigin: true //用于控制请求头host字段, true改为资源服务器, false改为请求服务器
-         },
-         '/huoHua': {
-            target: 'http://localhost:5001',
-            pathRewrite: { '^/huoHua': '' },
-            ws: true,
-            changeOrigin: true
-         }
+  // 开启代理服务器: 方式二
+  devServer: {
+    proxy: {
+      '/yaHu': { // 请求前缀
+        target: 'http://localhost:5000',
+        pathRewrite: { '^/yaHu': '' }, // 资源服务器接收代理服务器的api中过滤掉前缀
+        ws: true, // 用于支持websocket
+        changeOrigin: true //用于控制请求头host字段, true改为资源服务器, false改为请求服务器
+      },
+      '/huoHua': {
+        target: 'http://localhost:5001',
+        pathRewrite: { '^/huoHua': '' },
+        ws: true,
+        changeOrigin: true
       }
-   }
+    }
+  }
 }
 ```
 
@@ -4739,74 +4739,74 @@ module.exports = {
 </style>
 ```
 
-### summary:
+**summary:**:
 
 1. 方式一:
-   1. 优点: 配置简单, 请求资源时直接发给前端8080即可
-   2. 缺点: 不能配置多个代理, 不能灵活控制请求是否走代理
-   3. 工作方式: 当请求了前端不存在的资源时, 才会请求服务器, 优先匹配前端资源
+    1. 优点: 配置简单, 请求资源时直接发给前端8080即可
+    2. 缺点: 不能配置多个代理, 不能灵活控制请求是否走代理
+    3. 工作方式: 当请求了前端不存在的资源时, 才会请求服务器, 优先匹配前端资源
 2. 方式二:
     1. 优点: 可以配置多个代理, 并且可以灵活控制请求是否走代理
     2. 缺点: 配置略微繁琐, 请求时必须加前缀
 
 ------
 
-## 4.12 插槽
+### 插槽
 
-### 4.12.1 默认插槽
+#### 默认插槽
 
 `App组件`:
 
 ```vue
 
 <template>
-   <div class="box">
-      <List :list="yahoo">
-         <img src="../src/assets/logo.png" />
-      </List>
+  <div class="box">
+    <List :list="yahoo">
+      <img src="../src/assets/logo.png" />
+    </List>
 
-      <List :list="cabbage">
-         <ul>
-            <li v-for="(item, index) in cabbage" :key="index">{{ item }}</li>
-         </ul>
-      </List>
+    <List :list="cabbage">
+      <ul>
+        <li v-for="(item, index) in cabbage" :key="index">{{ item }}</li>
+      </ul>
+    </List>
 
-      <List :list="leslie">
-         <img src="../src/assets/logo.png" />
-      </List>
-   </div>
+    <List :list="leslie">
+      <img src="../src/assets/logo.png" />
+    </List>
+  </div>
 </template>
 
 <script>
-   import List from './components/List'
+  import List from './components/List'
 
-   export default {
-      name: 'App',
-      components: { List },
-      data() {
-         return {
-            yahoo: { name: 'yahoo', age: 23, sex: 'boy' },
-            cabbage: { name: 'cabbage', age: 22, sex: 'girl' },
-            leslie: { name: 'leslie', age: 65, sex: 'boy' }
-         }
+  export default {
+    name: 'App',
+    components: { List },
+    data() {
+      return {
+        yahoo: { name: 'yahoo', age: 23, sex: 'boy' },
+        cabbage: { name: 'cabbage', age: 22, sex: 'girl' },
+        leslie: { name: 'leslie', age: 65, sex: 'boy' }
       }
-   }
+    }
+  }
 </script>
 
 <style>
-   .box {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 150px;
-   }
+  .box {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 150px;
+  }
 
-   img {
-      width: 100%;
-   }
+  img {
+    width: 100%;
+  }
 
-   li {
-      margin-top: 30px;
-   }
+  li {
+    margin-top: 30px;
+  }
 </style>
 ```
 
@@ -4845,82 +4845,82 @@ module.exports = {
 
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203070050086.png)
 
-### 4.12.2 具名插槽
+#### 具名插槽
 
 `App组件`:
 
 ```vue
 
 <template>
-   <div class="box">
-      <List :list="yahoo">
-         <img slot="content" src="../src/assets/logo.png" />
-         <a slot="link" href="https://cn.vuejs.org/">进入Vue官网</a>
-      </List>
+  <div class="box">
+    <List :list="yahoo">
+      <img slot="content" src="../src/assets/logo.png" />
+      <a slot="link" href="https://cn.vuejs.org/">进入Vue官网</a>
+    </List>
 
-      <List :list="cabbage">
-         <ul slot="content">
-            <li v-for="(item, index) in cabbage" :key="index">{{ item }}</li>
-         </ul>
-         <a slot="link" href="https://www.baidu.com">进入百度</a>
-         <a slot="link" href="https://www.google.com.hk/">进入谷歌</a>
-      </List>
+    <List :list="cabbage">
+      <ul slot="content">
+        <li v-for="(item, index) in cabbage" :key="index">{{ item }}</li>
+      </ul>
+      <a slot="link" href="https://www.baidu.com">进入百度</a>
+      <a slot="link" href="https://www.google.com.hk/">进入谷歌</a>
+    </List>
 
-      <List :list="leslie">
-         <img slot="content" src="../src/assets/React.png" />
-         <template slot="link">
-            <a href="https://zh-hans.reactjs.org/">进入React官网</a>
-         </template>
-      </List>
-   </div>
+    <List :list="leslie">
+      <img slot="content" src="../src/assets/React.png" />
+      <template slot="link">
+        <a href="https://zh-hans.reactjs.org/">进入React官网</a>
+      </template>
+    </List>
+  </div>
 </template>
 
 <script>
-   import List from './components/List'
+  import List from './components/List'
 
-   export default {
-      name: 'App',
-      components: { List },
-      data() {
-         return {
-            yahoo: { name: 'yahoo', age: 23, sex: 'boy' },
-            cabbage: { name: 'cabbage', age: 22, sex: 'girl' },
-            leslie: { name: 'leslie', age: 65, sex: 'boy' }
-         }
+  export default {
+    name: 'App',
+    components: { List },
+    data() {
+      return {
+        yahoo: { name: 'yahoo', age: 23, sex: 'boy' },
+        cabbage: { name: 'cabbage', age: 22, sex: 'girl' },
+        leslie: { name: 'leslie', age: 65, sex: 'boy' }
       }
-   }
+    }
+  }
 </script>
 
 <style>
-   * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-   }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-   .box {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      margin-top: 150px;
-   }
+  .box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 150px;
+  }
 
-   img {
-      width: 100%;
-   }
+  img {
+    width: 100%;
+  }
 
-   li {
-      width: 150px;
-      height: 40px;
-      margin: 15px;
-      list-style: none;
-      text-align: center;
-      line-height: 40px;
-   }
+  li {
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+    list-style: none;
+    text-align: center;
+    line-height: 40px;
+  }
 
-   a {
-      margin: 5px 0;
-   }
+  a {
+    margin: 5px 0;
+  }
 </style>
 ```
 
@@ -4929,34 +4929,34 @@ module.exports = {
 ```vue
 
 <template>
-   <div class="list">
-      <h2>{{ list.name }}</h2>
-      <slot name="content">若没有传值则显示这段文字</slot>
-      <slot name="link">若没有传值则显示这段文字</slot>
-   </div>
+  <div class="list">
+    <h2>{{ list.name }}</h2>
+    <slot name="content">若没有传值则显示这段文字</slot>
+    <slot name="link">若没有传值则显示这段文字</slot>
+  </div>
 </template>
 
 <script>
-   export default {
-      name: 'List',
-      props: ['list']
-   }
+  export default {
+    name: 'List',
+    props: ['list']
+  }
 </script>
 
 <style>
-   .list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 200px;
-      height: 300px;
-      background-color: paleturquoise;
-   }
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 300px;
+    background-color: paleturquoise;
+  }
 
-   h2 {
-      margin: 10px 0;
-      text-align: center;
-   }
+  h2 {
+    margin: 10px 0;
+    text-align: center;
+  }
 </style>
 ```
 
@@ -4964,77 +4964,77 @@ module.exports = {
 
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203070119121.png)
 
-### 4.12.3 作用域插槽
+#### 作用域插槽
 
 `App组件`:
 
 ```vue
 
 <template>
-   <div class="box">
-      <List>
-         <template scope="yahu">
-            <ul>
-               <li v-for="(item, index) in yahu.yahoo" :key="index">
-                  {{ item }}
-               </li>
-            </ul>
-         </template>
-      </List>
+  <div class="box">
+    <List>
+      <template scope="yahu">
+        <ul>
+          <li v-for="(item, index) in yahu.yahoo" :key="index">
+            {{ item }}
+          </li>
+        </ul>
+      </template>
+    </List>
 
-      <List>
-         <template scope="yahoo">
-            <i v-for="(item, index) in yahoo.yahoo" :key="index">
-               {{ item }}
-            </i>
-         </template>
-      </List>
+    <List>
+      <template scope="yahoo">
+        <i v-for="(item, index) in yahoo.yahoo" :key="index">
+          {{ item }}
+        </i>
+      </template>
+    </List>
 
-      <List>
-         <template scope="{ yahoo }">
-            <b v-for="(item, index) in yahoo" :key="index">
-               {{ item }}
-            </b>
-         </template>
-      </List>
-   </div>
+    <List>
+      <template scope="{ yahoo }">
+        <b v-for="(item, index) in yahoo" :key="index">
+          {{ item }}
+        </b>
+      </template>
+    </List>
+  </div>
 </template>
 
 <script>
-   import List from './components/List'
+  import List from './components/List'
 
-   export default {
-      name: 'App',
-      components: { List }
-   }
+  export default {
+    name: 'App',
+    components: { List }
+  }
 </script>
 
 <style>
-   * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-   }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-   .box {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      margin-top: 150px;
-   }
+  .box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 150px;
+  }
 
-   img {
-      width: 100%;
-   }
+  img {
+    width: 100%;
+  }
 
-   li {
-      width: 150px;
-      height: 40px;
-      margin: 15px;
-      list-style: none;
-      text-align: center;
-      line-height: 40px;
-   }
+  li {
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+    list-style: none;
+    text-align: center;
+    line-height: 40px;
+  }
 </style>
 ```
 
@@ -5043,38 +5043,38 @@ module.exports = {
 ```vue
 
 <template>
-   <div class="list">
-      <h2>{{ yahoo.name }}</h2>
-      <slot :yahoo="yahoo">若没有传值则显示这段文字</slot>
-   </div>
+  <div class="list">
+    <h2>{{ yahoo.name }}</h2>
+    <slot :yahoo="yahoo">若没有传值则显示这段文字</slot>
+  </div>
 </template>
 
 <script>
-   export default {
-      name: 'List',
-      props: ['list'],
-      data() {
-         return {
-            yahoo: { name: 'yahoo', age: 23, sex: 'boy' }
-         }
+  export default {
+    name: 'List',
+    props: ['list'],
+    data() {
+      return {
+        yahoo: { name: 'yahoo', age: 23, sex: 'boy' }
       }
-   }
+    }
+  }
 </script>
 
 <style>
-   .list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 200px;
-      height: 300px;
-      background-color: paleturquoise;
-   }
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 300px;
+    background-color: paleturquoise;
+  }
 
-   h2 {
-      margin: 10px 0;
-      text-align: center;
-   }
+  h2 {
+    margin: 10px 0;
+    text-align: center;
+  }
 </style>
 ```
 
@@ -5082,94 +5082,94 @@ module.exports = {
 
 ![](http://cdn.jsdelivr.net/gh/leslieXin92/picGo/img/202203070137712.png)
 
-### summary:
+**summary:**:
 
 1. 作用: 让父组件可以向子组件指定的位置插入`HTML`结构, 也是一种组件间通讯的方式, 适用于父传子
 2. 分类: 默认插槽、具名插槽、作用域插槽
 3. 使用方式:
     1. 默认插槽:
-       - 父组件:
-          ```html
-          <Son>
-              <div> HTML结构 </div>
-          </Son>
-          ```
-       - 子组件:
-          ```html
-          <template>
-              <div>
-                  <slot> 插槽默认内容 </slot>
-              </div>
-          </template>
-          ```
+        - 父组件:
+           ```html
+           <Son>
+               <div> HTML结构 </div>
+           </Son>
+           ```
+        - 子组件:
+           ```html
+           <template>
+               <div>
+                   <slot> 插槽默认内容 </slot>
+               </div>
+           </template>
+           ```
     2. 具名插槽:
-       - 父组件:
-          ```html
-          <Son>
-             <template slot="yahoo">
-               <div> HTML结构 </div>
-             </template>
-
-             <template v-slot:cabbage>
-               <div> HTML结构 </div>
-             </template>
-          </Son>
-          ```
-       - 子组件:
-          ```html
-          <template>
-             <div>
-               <slot name="yahoo"> 插槽默认内容 </slot>
-               <slot name="cabbage"> 插槽默认内容 </slot>
-            </div>
-         </template>
-            ```
+        - 父组件:
+           ```html
+           <Son>
+              <template slot="yahoo">
+                <div> HTML结构 </div>
+              </template>
+ 
+              <template v-slot:cabbage>
+                <div> HTML结构 </div>
+              </template>
+           </Son>
+           ```
+        - 子组件:
+           ```html
+           <template>
+              <div>
+                <slot name="yahoo"> 插槽默认内容 </slot>
+                <slot name="cabbage"> 插槽默认内容 </slot>
+             </div>
+          </template>
+             ```
     3. 作用域插槽:
         1. 应用场景: 数据在组件的自身, 但根据数据生成的结构需要组件的使用者来决定
         2. code:
-           - 父组件:
+            - 父组件:
+               ```html
+                  <Son>
+                     <template scope="yahu">
+                        <ul>
+                           <li v-for="(item, index) in yahu.yahoo" :key="index">
+                              {{ item }}
+                           </li>
+                       </ul>
+                    </template>
+                 </Son>
+ 
+                  <Son>
+                     <template scope="yahoo">
+                        <i v-for="(item, index) in yahoo.yahoo" :key="index">
+                          {{ item }}
+                        </i>
+                     </template>
+                  </Son>
+ 
+                  <Son>
+                     <template scope="{ yahoo }">
+                        <b v-for="(item, index) in yahoo" :key="index">
+                          {{ item }}
+                        </b>
+                     </template>
+                  </Son>
+                ```
+            - 子组件:
               ```html
-                 <Son>
-                    <template scope="yahu">
-                       <ul>
-                          <li v-for="(item, index) in yahu.yahoo" :key="index">
-                             {{ item }}
-                          </li>
-                      </ul>
-                   </template>
-                </Son>
-
-                 <Son>
-                    <template scope="yahoo">
-                       <i v-for="(item, index) in yahoo.yahoo" :key="index">
-                         {{ item }}
-                       </i>
-                    </template>
-                 </Son>
-
-                 <Son>
-                    <template scope="{ yahoo }">
-                       <b v-for="(item, index) in yahoo" :key="index">
-                         {{ item }}
-                       </b>
-                    </template>
-                 </Son>
-               ```
-           - 子组件:
-             ```html
-             <template>
-                <div>
-                   <slot :yahoo="yahoo"> 若没有传值则显示这段文字 </slot>
-                </div>
-             </template>
-
-             <script>
-             export default {
-                data () {
-                   return {
-                      yahoo: { name: 'yahoo', age: 23, sex: 'boy' },
-                   }
-               },
-             }
-             </script>
-             ```
+              <template>
+                 <div>
+                    <slot :yahoo="yahoo"> 若没有传值则显示这段文字 </slot>
+                 </div>
+              </template>
+ 
+              <script>
+              export default {
+                 data () {
+                    return {
+                       yahoo: { name: 'yahoo', age: 23, sex: 'boy' },
+                    }
+                },
+              }
+              </script>
+              ```
