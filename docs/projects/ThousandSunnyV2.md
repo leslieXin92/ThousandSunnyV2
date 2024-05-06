@@ -1,6 +1,6 @@
 ---
 title: Thousand Sunny V2
-description: personal website front-end V2
+description: Personal website front-end V2
 date: 2024-04-28
 cover: /projects/ThousandSunnyV2.gif
 technologyStack: [ 'Vue3', 'Vuepress2', 'Vite', 'ThreeJS', 'Github Actions' ]

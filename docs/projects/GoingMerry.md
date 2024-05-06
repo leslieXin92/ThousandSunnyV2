@@ -1,6 +1,6 @@
 ---
 title: Going Merry
-description: personal website back-end
+description: Personal website back-end
 date: 2023-07-24
 cover: /projects/GoingMerry.gif
 technologyStack: [ 'Koa2', 'Typescript','MySQL', 'Github Actions' ]
