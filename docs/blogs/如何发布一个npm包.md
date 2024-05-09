@@ -3,13 +3,13 @@ title: 如何发布一个npm包
 date: 2024-05-09
 ---
 
-## 一、前期准备
+## 前期准备
 
 ### 背景介绍
 
 #### 什么是npm包
 
-npm包是通过Node包管理器（npm）发布和共享的代码模块，它们也可以被其他开发者在他们的项目中使用。
+npm包是通过Node包管理器（npm）发布和共享的代码模块，它们也可以被其他开发者在他们的项目中使用
 
 ### 环境准备
 
@@ -17,9 +17,7 @@ npm包是通过Node包管理器（npm）发布和共享的代码模块，它们�
 - npm账号。可通过[npm官网](https://www.npmjs.com/)注册登录，用于发布到`npm`上
 - github账号。可通过[github](https://github.com/)注册登录，用于进行代码管理及发布到`github package`上
 
-## 二、开发
-
-### step1: 初始化
+## 初始化
 
 ```shell
 # 创建文件夹
@@ -34,7 +32,7 @@ npm init
 
 ![Image](../.vuepress/public/blogs/npm/init.png)
 
-### step2: 配置`package.json`
+## 配置`package.json`
 
 ```json lines
 {
@@ -54,7 +52,7 @@ npm init
 }
 ```
 
-### step3: node modules映射
+## node modules映射
 
 ```shell
 npm link
@@ -70,7 +68,7 @@ npm link
 npm unlink <package name>
 ```
 
-### step4: 跑通最小实例(MVP)
+## 跑通最小实例(MVP)
 
 **目录结构**
 
@@ -109,7 +107,7 @@ console.log('I love cabbage')
 终端再次输入`love`，跑通
 ![Image](../.vuepress/public/blogs/npm/mvp-success.png)
 
-### step5: 安装[commander](https://github.com/tj/commander.js)
+## 安装[commander](https://github.com/tj/commander.js)
 
 ```shell
 npm i commander
@@ -118,9 +116,9 @@ npm i commander
 `commander`是用来解析指令和参数的，例如`vue-cli`中的`vue create app-demo`，其中`create`就是指令，`app-demo`
 就是本次指令的参数。收到不同指令及不同参数，包内执行不同的事情。
 
-### step6: 进入开发
+## 进入开发
 
-#### 指令一: 查看版本号
+### 指令一: 查看版本号
 
 **目录结构**
 
@@ -184,9 +182,9 @@ program.parse(process.argv)
 **再次测试**
 ![Image](../.vuepress/public/blogs/npm/version-success.png)
 
-#### 指令二: 日期计算器
+### 指令二: 日期计算器
 
-##### 计算在一起的时间
+#### 计算在一起的时间
 
 **目录结构**
 
@@ -264,7 +262,7 @@ love cabbage
 
 ![Image](../.vuepress/public/blogs/npm/date.png)
 
-##### 计算纪念日的日期
+#### 计算纪念日的日期
 
 `cabbage/index.js`
 
@@ -314,7 +312,7 @@ love cabbage -t 999
 
 ![Image](../.vuepress/public/blogs/npm/target.png)
 
-##### 计算时间差值
+#### 计算日期差值
 
 `cabbage/index.js`
 
@@ -374,47 +372,157 @@ love cabbage -d 2024-07-21
 
 ![Image](../.vuepress/public/blogs/npm/diff.png)
 
-##### 优化
+#### 优化
 
-避免出现`love cabbage -d <date> -t <number>`这种情况的出现，作出优化
+1. 避免出现`love cabbage -d <date> -t <number>`这种情况的出现，作出优化
 
-`cabbage/action.js`
+   `cabbage/action.js`
 
-```javascript
-const handleCabbage = (options) => {
-  const start = new Date('2022-01-18')
+   ```javascript
+   const handleCabbage = (options) => {
+     const start = new Date('2022-01-18')
+   
+     if (options.diff && options.target) {
+       throw new Error('Only diff or target can be provided, not both')
+     }
+   
+     if (options.diff) {
+       if (!/^\d{4}-\d{2}-\d{2}$/.test(options.diff)) throw new Error('Target should be a date formatted as YYYY-MM-DD')
+       const targetDate = new Date(options.diff)
+       const away = Math.ceil((targetDate - start) / (1000 * 60 * 60 * 24))
+       console.log(`The diff is ${away} days`)
+       return
+     }
+   
+     if (options.target) {
+       if (isNaN(options.target)) throw new Error('Target should be a number')
+       const targetDate = new Date(start.getTime())
+       targetDate.setDate(targetDate.getDate() + Number(options.target))
+       console.log(`From begin and after ${options.target} days, the date will be ${targetDate}`)
+       return
+     }
+   
+     const today = new Date()
+     const away = Math.ceil((today - start) / (1000 * 60 * 60 * 24)) - 1
+     console.log(`Leslie and Cabbage have been together for ${away} days`)
+   }
+   
+   module.exports = {
+     handleCabbage
+   }
+   ```
 
-  if (options.diff && options.target) {
-    throw new Error('Only diff or target can be provided, not both')
-  }
+2. 优化样式
 
-  if (options.diff) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(options.diff)) throw new Error('Target should be a date formatted as YYYY-MM-DD')
-    const targetDate = new Date(options.diff)
-    const away = Math.ceil((targetDate - start) / (1000 * 60 * 60 * 24))
-    console.log(`The diff is ${away} days`)
-    return
-  }
+   打印出来的字体很丑，封装一波`utils`
 
-  if (options.target) {
-    if (isNaN(options.target)) throw new Error('Target should be a number')
-    const targetDate = new Date(start.getTime())
-    targetDate.setDate(targetDate.getDate() + Number(options.target))
-    console.log(`From begin and after ${options.target} days, the date will be ${targetDate}`)
-    return
-  }
+   **目录结构**
 
-  const today = new Date()
-  const away = Math.ceil((today - start) / (1000 * 60 * 60 * 24)) - 1
-  console.log(`Leslie and Cabbage have been together for ${away} days`)
-}
+   ```markdown
+   Cabbage
+   │── utils
+   │    ├── log.js
+   │    └── time.js
+   │── lib
+   │    └── core
+   │        ├── version
+   │        │    └── index.js
+   │        └── cabbage
+   │             ├── index.js
+   │             └── actions.js
+   ├── index.js
+   └── package.json
+   ```
 
-module.exports = {
-  handleCabbage
-}
-```
+   `utils/log.js`
 
-#### 指令三: 帮助面板
+   ```javascript
+   const log = (str, color = 'cyan') => {
+     const colorCodes = {
+       'black': '\x1b[30m',
+       'red': '\x1b[31m',
+       'green': '\x1b[32m',
+       'yellow': '\x1b[33m',
+       'blue': '\x1b[34m',
+       'magenta': '\x1b[35m',
+       'cyan': '\x1b[36m',
+       'white': '\x1b[37m'
+     }
+     const colorCode = colorCodes[color]
+     console.log(`\x1b[1m\x1b[3m${colorCode}%s\x1b[0m`, str)
+   }
+   
+   module.exports = {
+     log
+   }
+   ```
+
+   `utils/time.js`
+
+   ```javascript
+   const timeFormat = (time, format = 'YYYY-MM-DD') => {
+     const date = new Date(time)
+   
+     const formatParts = {
+       'YYYY': date.getFullYear(),
+       'MM': ('0' + (date.getMonth() + 1)).slice(-2),
+       'DD': ('0' + date.getDate()).slice(-2),
+       'HH': ('0' + date.getHours()).slice(-2),
+       'mm': ('0' + date.getMinutes()).slice(-2),
+       'ss': ('0' + date.getSeconds()).slice(-2)
+     }
+   
+     return format.replace(/YYYY|MM|DD|HH|mm|ss/g, match => formatParts[match])
+   }
+   
+   module.exports = {
+     timeFormat
+   }
+   ```
+
+   `cabbage/action.js`
+
+   ```javascript
+   const { log } = require('../../utils/log')
+   const { timeFormat } = require('../../utils/time')
+   
+   const handleCabbage = (options) => {
+     const start = new Date('2022-01-18')
+   
+     if (options.diff && options.target) {
+       throw new Error('Only diff or target can be provided, not both')
+     }
+   
+     if (options.diff) {
+       if (!/^\d{4}-\d{2}-\d{2}$/.test(options.diff)) throw new Error('Target should be a date formatted as YYYY-MM-DD')
+       const targetDate = new Date(options.diff)
+       const away = Math.ceil((targetDate - start) / (1000 * 60 * 60 * 24))
+       log(`The diff is ${away} days`)
+       return
+     }
+   
+     if (options.target) {
+       if (isNaN(options.target)) throw new Error('Target should be a number')
+       const targetDate = new Date(start.getTime())
+       targetDate.setDate(targetDate.getDate() + Number(options.target))
+       log(`From begin and after ${options.target} days, the date will be ${timeFormat(targetDate)}`)
+       return
+     }
+   
+     const today = new Date()
+     const away = Math.ceil((today - start) / (1000 * 60 * 60 * 24)) - 1
+     log(`Leslie and Cabbage have been together for ${away} days`)
+   }
+   
+   module.exports = {
+     handleCabbage
+   }
+   ```
+
+   **测试**
+   ![Image](../.vuepress/public/blogs/npm/styled.png)
+
+### 指令三: 帮助面板
 
 `index.js`
 
@@ -461,117 +569,7 @@ love -h
 
 ![Image](../.vuepress/public/blogs/npm/help.png)
 
-#### 优化样式
-
-打印出来的字体很丑，封装一波`utils`
-
-**目录结构**
-
-```markdown
-Cabbage
-│── utils
-│   ├── log.js
-│   └── time.js
-│── lib
-│   └── core
-│       ├── version
-│       │   └── index.js
-│       └── cabbage
-│           ├── index.js
-│           └── actions.js
-├── index.js
-└── package.json
-```
-
-`utils/log.js`
-
-```javascript
-const log = (str, color = 'cyan') => {
-  const colorCodes = {
-    'black': '\x1b[30m',
-    'red': '\x1b[31m',
-    'green': '\x1b[32m',
-    'yellow': '\x1b[33m',
-    'blue': '\x1b[34m',
-    'magenta': '\x1b[35m',
-    'cyan': '\x1b[36m',
-    'white': '\x1b[37m'
-  }
-  const colorCode = colorCodes[color]
-  console.log(`\x1b[1m\x1b[3m${colorCode}%s\x1b[0m`, str)
-}
-
-module.exports = {
-  log
-}
-```
-
-`utils/time.js`
-
-```javascript
-const timeFormat = (time, format = 'YYYY-MM-DD') => {
-  const date = new Date(time)
-
-  const formatParts = {
-    'YYYY': date.getFullYear(),
-    'MM': ('0' + (date.getMonth() + 1)).slice(-2),
-    'DD': ('0' + date.getDate()).slice(-2),
-    'HH': ('0' + date.getHours()).slice(-2),
-    'mm': ('0' + date.getMinutes()).slice(-2),
-    'ss': ('0' + date.getSeconds()).slice(-2)
-  }
-
-  return format.replace(/YYYY|MM|DD|HH|mm|ss/g, match => formatParts[match])
-}
-
-module.exports = {
-  timeFormat
-}
-```
-
-`cabbage/action.js`
-
-```javascript
-const { log } = require('../../utils/log')
-const { timeFormat } = require('../../utils/time')
-
-const handleCabbage = (options) => {
-  const start = new Date('2022-01-18')
-
-  if (options.diff && options.target) {
-    throw new Error('Only diff or target can be provided, not both')
-  }
-
-  if (options.diff) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(options.diff)) throw new Error('Target should be a date formatted as YYYY-MM-DD')
-    const targetDate = new Date(options.diff)
-    const away = Math.ceil((targetDate - start) / (1000 * 60 * 60 * 24))
-    log(`The diff is ${away} days`)
-    return
-  }
-
-  if (options.target) {
-    if (isNaN(options.target)) throw new Error('Target should be a number')
-    const targetDate = new Date(start.getTime())
-    targetDate.setDate(targetDate.getDate() + Number(options.target))
-    log(`From begin and after ${options.target} days, the date will be ${timeFormat(targetDate)}`)
-    return
-  }
-
-  const today = new Date()
-  const away = Math.ceil((today - start) / (1000 * 60 * 60 * 24)) - 1
-  log(`Leslie and Cabbage have been together for ${away} days`)
-}
-
-module.exports = {
-  handleCabbage
-}
-```
-
-**测试**
-![Image](../.vuepress/public/blogs/npm/styled.png)
-
-## 三、发布
+## 发布
 
 ### 发布到[npm](https://www.npmjs.com/)
 
@@ -621,6 +619,6 @@ module.exports = {
    npm publish
    ```
 
-## 四、自动化
+## 自动化
 
 挖坑，回头再填……
