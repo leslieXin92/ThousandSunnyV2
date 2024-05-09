@@ -76,10 +76,10 @@ npm unlink <package name>
 
 ```markdown
 Cabbage
-├── package.json
+│── lib
+│   └── core
 ├── index.js
-└── lib
-└── core
+└── package.json
 ```
 
 `index.js`
@@ -120,28 +120,18 @@ npm i commander
 
 ### step6: 进入开发
 
+#### 指令一: 查看版本号
+
 **目录结构**
 
 ```markdown
 Cabbage
-├── package.json
+│── lib
+│   └── core
+│       └── version
+│           └── index.js
 ├── index.js
-└── lib
-└── core
-```
-
-#### 指令一: 查看版本号
-
-**当前目录结构**
-
-```markdown
-Cabbage
-├── package.json
-├── index.js
-└── lib
-└── core
-└── version
-└── index.js
+└── package.json
 ```
 
 `index.js`
@@ -198,17 +188,17 @@ program.parse(process.argv)
 
 ##### 计算在一起的时间
 
-**当前目录结构**
+**目录结构**
 
 ```markdown
 Cabbage
 │── lib
-│ └── core
-│ ├── version
-│ │ └── index.js
-│ └── cabbage
-│ ├── index.js
-│ └── actions.js
+│   └── core
+│       ├── version
+│       │   └── index.js
+│       └── cabbage
+│           ├── index.js
+│           └── actions.js
 ├── index.js
 └── package.json
 ```
@@ -479,11 +469,18 @@ love -h
 
 ```markdown
 Cabbage
-├── package.json
+│── utils
+│   ├── log.js
+│   └── time.js
+│── lib
+│   └── core
+│       ├── version
+│       │   └── index.js
+│       └── cabbage
+│           ├── index.js
+│           └── actions.js
 ├── index.js
-└── lib
-├── utils
-└── core
+└── package.json
 ```
 
 `utils/log.js`
