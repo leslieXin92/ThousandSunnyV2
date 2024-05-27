@@ -3,15 +3,13 @@ title: Swift之基础部分
 date: 2024-05-27
 ---
 
-## 基础部分
+## 常量与变量
 
-### 常量与变量
-
-#### 声明
+### 声明
 
 用`let`来声明常量，用`var`来声明变量
 
-#### 类型注解
+### 类型注解
 
 ```swift
 var message: String
@@ -19,7 +17,7 @@ var message: String
 var red, green, blue: Double
 ```
 
-#### 输出
+### 输出
 
 ```swift
 print(message)
@@ -28,7 +26,7 @@ print(message)
 print("my name is \(name)")
 ```
 
-### 注释
+## 注释
 
 ```swift
 // 这是一个注释
@@ -45,30 +43,30 @@ print("my name is \(name)")
 */
 ```
 
-### 尾随分号
+## 尾随分号
 
 类似`javascript`，可有可无
 
-### 整数
+## 整数
 
 - 整数就是没有小数部分的数字，如`18`、`-36`
 - `Swift`提供了`8`、`16`、`32`和`64`位的有符号和无符号整数类型。`UInt8`、`Uint32`…
 
-#### 范围
+### 范围
 
 ```swift
 let min = UInt8.min // min为0，是UInt8类型
 let max = UInt8.max // max为255，是UInt8类型
 ```
 
-#### Int
+### Int
 
 一般来说，不需要指定整数长度，`Swift`提供了一个特殊的整数类型`Int`，一般来说，使用`Int`就够了
 
 - 在32位平台上，`Int`和`Int32`长度相同
 - 在64位平台上，`Int`和`Int64`长度相同
 
-#### UInt
+### UInt
 
 > 尽量不要使用`UInt`，除非你真的需要存储一个和当前平台原生字长相同的无符号整数。就算已知是非负数，也统一使用`Int`类型
 
@@ -77,7 +75,7 @@ let max = UInt8.max // max为255，是UInt8类型
 - 在32位平台上，`UInt`和`UInt32`长度相同
 - 在64位平台上，`UInt`和`UInt64`长度相同
 
-### 浮点数
+## 浮点数
 
 - 有小数部分的数字，如`3.14`、`0.1`、`-1.2`
 - 浮点类型比整数类型表示的范围更大，可以储存比`Int`类型更大或更小的数字
@@ -85,7 +83,7 @@ let max = UInt8.max // max为255，是UInt8类型
     - `Double`：表示64位浮点数，储存很大或者精度很高的浮点数的类型，至少15位小数
     - `Float`：表示32位浮点数，精度要求不高的类型，6位小数
 
-### 类型安全和类型推断
+## 类型安全和类型推断
 
 - 整数会被推断为`Int`类型
 - 浮点数总是会被推断为`Double`
@@ -99,7 +97,7 @@ let b = 3.14 // 会被推断为 Double 类型
 let c = 18 + 3.14 // 会被推断为 Doublu
 ```
 
-### 数值型字面量
+## 数值型字面量
 
 整数字面量可以被写作
 
@@ -127,14 +125,14 @@ let b = 1_000_000
 let c = 1_000_000_000_000_1
 ```
 
-### 数值型类型转换
+## 数值型类型转换
 
 ```swift
 let a: UInt8 = -1 // UInt8 类型不能存储负数，所以会报错
 let b: Int8 = Int8.max + 1 // Int8 类型不能存储超过最大值的数，所以会报错
 ```
 
-#### 整数转化
+### 整数转化
 
 ```swift
 let a: UInt16 = 2_000
@@ -142,7 +140,7 @@ let b: UInt8 = 1
 let c = a + UInt16(b)
 ```
 
-#### 整数和浮点数转换
+### 整数和浮点数转换
 
 ```swift
 let a = 3
@@ -153,7 +151,7 @@ let intPi = Int(pi) // 3
 
 整数转化为浮点数时，小数会被直接截取，不会四舍五入
 
-### 类型别名
+## 类型别名
 
 ```swift
 typealias AudioSample = UInt16
@@ -161,7 +159,7 @@ typealias AudioSample = UInt16
 var maxAmplitudeFound: AudioSample = AudioSample.min // 10
 ```
 
-### 布尔值
+## 布尔值
 
 ```swift
 let a: Bool = true
@@ -179,7 +177,7 @@ if c == 1 {
 }
 ```
 
-### 元组
+## 元组
 
 ```swift
 let http404Error = (404, "Not Found")
@@ -192,14 +190,14 @@ print("The status code is \(statusCode)") // The status code is 404
 print("The status message is \(statusMessage)") // The status message is Not Found
 ```
 
-### 可选类型
+## 可选类型
 
 ```swift
 let a = "123"
 let b = Int(a) // 推测类型为 optional Int
 ```
 
-#### nil
+### nil
 
 ```swift
 var a: Int? = 404 // a 包含一个可选的 Int 值 404
@@ -216,7 +214,7 @@ if b != nil {
 }
 ```
 
-#### 可选绑定
+### 可选绑定
 
 ```swift
 if let a = b {
@@ -230,7 +228,7 @@ if let c = Int(d) {
 }
 ```
 
-#### 隐式解析可选类型
+### 隐式解析可选类型
 
 ```swift
 let a: String? = "aaa"
@@ -240,7 +238,7 @@ let c: String! = "ccc"
 let d: String = c  // 不需要感叹号
 ```
 
-### 错误处理
+## 错误处理
 
 ```swift
 // case 1
@@ -270,9 +268,9 @@ do {
 }
 ```
 
-### 断言和先决条件
+## 断言和先决条件
 
-#### 使用断言进行调试
+### 使用断言进行调试
 
 可以使用`assert(_:_:file:line:)` 函数来写一个断言
 
@@ -295,7 +293,7 @@ if age > 10 {
 }
 ```
 
-#### 强制执行先决条件
+### 强制执行先决条件
 
 当一个条件可能为假，但是条件必须为真才能继续执行的时候，需要使用先决条件
 
